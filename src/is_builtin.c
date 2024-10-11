@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/11 13:42:33 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/11 14:19:29 by mde-krui      ########   odam.nl         */
+/*   Created: 2024/10/11 14:48:25 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/10/11 15:10:06 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,21 @@
 
 bool	is_builtin(t_token *token)
 {
-	char	*builtins;
-	int		i;
-
 	if (token->type != TKN_CMD)
 		return (false);
-	builtins = get_builtins();
-	i = 0;
-	while (i < 7)
-	{
-		if (ft_strcmp(token->value, builtins[i]))
-			return (true);
-		return (false);
-	}
+	if (ft_strcmp(token->type, "echo"))
+		return (true);
+	if (ft_strcmp(token->type, "cd"))
+		return (true);
+	if (ft_strcmp(token->type, "pwd"))
+		return (true);
+	if (ft_strcmp(token->type, "export"))
+		return (true);
+	if (ft_strcmp(token->type, "unset"))
+		return (true);
+	if (ft_strcmp(token->type, "env"))
+		return (true);
+	if (ft_strcmp(token->type, "exit"))
+		return (true);
+	return (false);
 }

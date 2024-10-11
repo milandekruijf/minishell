@@ -7,7 +7,7 @@
 
 NAME = minishell
 
-SRCS = main strcmp is_builtin handle_builtin
+SRCS = main strcmp is_builtin create_token add_token get_last_token
 
 SRC_DIR = src
 INC_DIR = include
@@ -27,7 +27,6 @@ MAKEFLAGS += --no-print-directory
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(SRCS)))
 DIRS = $(sort $(dir $(OBJS)))
-/home/mde-krui/sgoinfre/Projects/libft/src/strcmp.c
 
 $(OUT): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(OUT)

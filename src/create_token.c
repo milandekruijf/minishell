@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   create_token.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/11 13:26:50 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/11 15:02:46 by mde-krui      ########   odam.nl         */
+/*   Created: 2023/10/11 11:15:25 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/10/11 15:04:55 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int argc, char **argv)
+t_token	*create_token(char *value)
 {
-	return (0);
+	t_token	*token;
+
+	token = (t_token *)malloc(sizeof(*token));
+	if (!token)
+		return (NULL);
+	token->value = value;
+	token->next = NULL;
+	return (token);
 }

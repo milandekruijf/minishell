@@ -1,0 +1,8 @@
+{
+	"files.associations": {
+		"readline.h": "c",
+		"fcntl.h": "c",
+		"stdio.h": "c",
+		"wait.h": "c"
+	}
+}
