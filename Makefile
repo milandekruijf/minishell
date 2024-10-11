@@ -7,7 +7,7 @@
 
 NAME = minishell
 
-SRCS = main
+SRCS = main strcmp is_builtin handle_builtin
 
 SRC_DIR = src
 INC_DIR = include
@@ -27,14 +27,7 @@ MAKEFLAGS += --no-print-directory
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(SRCS)))
 DIRS = $(sort $(dir $(OBJS)))
-
-GREEN = \033[0;32m
-RED = \033[0;31m
-RESET = \033[0m
-
-all: $(NAME)
-
-$(NAME): $(OUT)
+/home/mde-krui/sgoinfre/Projects/libft/src/strcmp.c
 
 $(OUT): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(OUT)
