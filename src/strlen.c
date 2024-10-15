@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   create_token.c                                     :+:    :+:            */
+/*   strlen.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/10/11 11:15:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/15 13:55:25 by mde-krui      ########   odam.nl         */
+/*   Created: 2024/10/15 13:59:13 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/10/15 13:59:16 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_token	*create_token(enum e_TokenType type, char *value)
+size_t	ft_strlen(const char *s)
 {
-	t_token	*token;
+	size_t	res;
 
-	token = (t_token *)malloc(sizeof(*token));
-	if (!token)
-		return (NULL);
-	token->type = type;
-	token->value = value;
-	token->next = NULL;
-	return (token);
+	res = 0;
+	while (s[res])
+		res++;
+	return (res);
 }

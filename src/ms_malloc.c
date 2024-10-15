@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   create_token.c                                     :+:    :+:            */
+/*   ms_malloc.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/10/11 11:15:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/15 13:55:25 by mde-krui      ########   odam.nl         */
+/*   Created: 2024/10/15 13:58:07 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/10/15 14:35:37 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_token	*create_token(enum e_TokenType type, char *value)
+void	*ms_malloc(size_t size)
 {
-	t_token	*token;
+	void	*memory;
 
-	token = (t_token *)malloc(sizeof(*token));
-	if (!token)
-		return (NULL);
-	token->type = type;
-	token->value = value;
-	token->next = NULL;
-	return (token);
+	memory = malloc(size);
+	if (memory == NULL)
+	{
+		printf("ms_malloc: failed to allocate %zu bytes\n", size);
+		exit(MS_EXIT_MALLOC_ERROR);
+	}
+	return (memory);
 }
