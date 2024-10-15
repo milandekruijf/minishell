@@ -6,24 +6,11 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:12:31 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/15 14:40:56 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/15 14:53:58 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-enum				e_ParseStates
-{
-	PS_EMPTY,
-	PS_WORD
-};
-
-enum				e_SymbolType
-{
-	PS_SYMBOL_WHITESPACE,
-	PS_SYMBOL_LETTER,
-	PS_SYMBOL_PIPE
-};
 
 enum e_SymbolType	get_symbol_type(char ch)
 {
@@ -34,13 +21,12 @@ enum e_SymbolType	get_symbol_type(char ch)
 	return (PS_SYMBOL_LETTER);
 }
 
-void	handle_empty(enum e_ParseStates *state, char **start, char **s)
+void	handle_empty(enum e_ParseState *state, char **start, char **s)
 {
 	if (get_symbol_type(**s) == PS_SYMBOL_WHITESPACE)
 		return ;
 	if (get_symbol_type(**s) == PS_SYMBOL_PIPE)
 	{
-        
 	}
 	if (get_symbol_type(**s) == PS_SYMBOL_LETTER)
 	{
@@ -49,25 +35,24 @@ void	handle_empty(enum e_ParseStates *state, char **start, char **s)
 	}
 }
 
-void	handle_word(enum e_ParseStates *state, char **start, char **s)
+void	handle_word(enum e_ParseState *state, char **start, char **s)
 {
 	if (get_symbol_type(**s) == PS_SYMBOL_WHITESPACE)
 	{
-        
-    }
+	}
 	if (get_symbol_type(**s) == PS_SYMBOL_PIPE)
 	{
 	}
 	if (get_symbol_type(**s) == PS_SYMBOL_LETTER)
 	{
-		return;
+		return ;
 	}
 }
 
-token	*parse_tokens(char *s)
+t_token	*parse_tokens(char *s)
 {
-	enum e_ParseStates state;
-	char *start;
+	enum e_ParseState	state;
+	char				*start;
 
 	state = PS_EMPTY;
 	start = s;

@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/15 14:40:32 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/15 14:53:50 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ enum					e_ExitCode
 enum					e_TokenType
 {
 	TKN_UNKNOWN,
-
 	TKN_CMD,
 	TKN_ARG,
 	TKN_FILE,
@@ -70,7 +69,6 @@ enum					e_TokenType
 enum					e_BuiltIn
 {
 	BI_UNKNOWN,
-
 	BI_ECHO,
 	BI_CD,
 	BI_PWD,
@@ -78,6 +76,19 @@ enum					e_BuiltIn
 	BI_UNSET,
 	BI_ENV,
 	BI_EXIT,
+};
+
+enum					e_ParseState
+{
+	PS_EMPTY,
+	PS_WORD
+};
+
+enum					e_SymbolType
+{
+	PS_SYMBOL_WHITESPACE,
+	PS_SYMBOL_LETTER,
+	PS_SYMBOL_PIPE
 };
 
 // ----------------------------------------
@@ -107,7 +118,7 @@ void					ms_assert(bool predicate, char *message);
 
 bool					is_builtin(t_token *token);
 t_token					*get_last_token(t_token *tokens);
-t_token					*create_token(enum e_TokenType, char *value);
+t_token					*create_token(enum e_TokenType type, char *value);
 void					add_token(t_token **tokens, t_token *token);
 void					assert_is_builtin(t_token *token);
 enum e_BuiltIn			get_builtin(t_token *token);
@@ -119,6 +130,7 @@ void					exec_exit(t_token *token);
 void					exec_export(t_token *token);
 void					exec_unset(t_token *token);
 void					exec_env(t_token *token);
+void					exec_external(t_token *token);
 
 #endif
 

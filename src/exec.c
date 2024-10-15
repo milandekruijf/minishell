@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:03:45 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/15 14:45:52 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/15 14:52:00 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	exec(t_token **tokens)
 {
-	t_token *token;
+	t_token	*token;
 
 	token = *tokens;
 	if (is_builtin(token))
@@ -22,4 +22,5 @@ void	exec(t_token **tokens)
 		exec_builtin(token);
 		return ;
 	}
+	exec_external(token);
 }
