@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   exec.c                                             :+:    :+:            */
+/*   print_envp.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
+/*   By: minecraftmultiplayer <minecraftmultipla      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/15 14:03:45 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/18 16:34:47 by minecraftmu   ########   odam.nl         */
+/*   Created: 2024/10/18 14:56:27 by minecraftmu   #+#    #+#                 */
+/*   Updated: 2024/10/18 16:37:14 by minecraftmu   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exec(t_token_list *tokens, t_env_var_list *env_vars)
+void	print_envp(const char **envp)
 {
-	t_token	*token;
+	size_t	i;
 
-	token = tokens->head;
-	while (token->next)
-	{
-		if (is_builtin(token))
-		{
-			exec_builtin(token);
-			token = token->next;
-			continue ;
-		}
-		exec_external(token);
-		token = token->next;
-	}
+	i = 0;
+	while (envp[i])
+		printf("%s\n", envp[i++]);
 }

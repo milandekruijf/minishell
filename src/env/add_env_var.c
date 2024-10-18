@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   exec.c                                             :+:    :+:            */
+/*   add_env_var.c                                      :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
+/*   By: minecraftmultiplayer <minecraftmultipla      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/15 14:03:45 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/18 16:34:47 by minecraftmu   ########   odam.nl         */
+/*   Created: 2024/10/18 15:18:56 by minecraftmu   #+#    #+#                 */
+/*   Updated: 2024/10/18 16:37:32 by minecraftmu   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exec(t_token_list *tokens, t_env_var_list *env_vars)
+void	add_env_var(t_env_var_list *list, t_env_var *var)
 {
-	t_token	*token;
-
-	token = tokens->head;
-	while (token->next)
+	if (!list->tail)
 	{
-		if (is_builtin(token))
-		{
-			exec_builtin(token);
-			token = token->next;
-			continue ;
-		}
-		exec_external(token);
-		token = token->next;
+		list->head = var;
+		list->tail = var;
+		return ;
 	}
+	list->tail->next = var;
+	list->tail = var;
 }

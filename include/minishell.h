@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/18 14:20:30 by minecraftmu   ########   odam.nl         */
+/*   Updated: 2024/10/18 16:37:37 by minecraftmu   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,17 +78,17 @@ enum					e_BuiltIn
 	BI_EXIT,
 };
 
-enum					e_ParseState
+enum					e_TknParseState
 {
-	PS_EMPTY,
-	PS_WORD
+	TKN_PS_EMPTY,
+	TKN_PS_WORD
 };
 
-enum					e_SymbolType
+enum					e_TknParseSymbolType
 {
-	PS_SYMBOL_WHITESPACE,
-	PS_SYMBOL_LETTER,
-	PS_SYMBOL_PIPE
+	TKN_PS_SYMBOL_WHITESPACE,
+	TKN_PS_SYMBOL_LETTER,
+	TKN_PS_SYMBOL_PIPE
 };
 
 // ----------------------------------------
@@ -104,9 +104,22 @@ typedef struct s_token
 
 typedef struct s_token_list
 {
-	t_token				*head;
-	t_token				*tail;
+	struct s_token		*head;
+	struct s_token		*tail;
 }						t_token_list;
+
+typedef struct s_env_var
+{
+	char				*key;
+	char				*value;
+	struct s_env_var	*next;
+}						t_env_var;
+
+typedef struct s_env_var_list
+{
+	struct s_env_var	*head;
+	struct s_env_var	*tail;
+}						t_env_var_list;
 
 // ----------------------------------------
 // Functions
@@ -114,16 +127,28 @@ typedef struct s_token_list
 
 // Utils
 
+char					*ft_strchr(const char *s, int c);
 int						ft_strcmp(const char *s1, const char *s2);
 size_t					ft_strlen(const char *s);
-char					*ft_strndup(char *s, ssize_t n);
+char					*ft_strndup(const char *s, ssize_t n);
 void					*ms_malloc(size_t size);
-void					ms_assert(bool predicate, char *message);
+void					ms_assert(bool predicate, const char *message);
+char					*ft_strdup(const char *s);
 
 // Signals
 
 void					handle_sigint(int sig);
 void					listen_sigint(void);
+
+// Env
+
+void					print_envp(const char **envp);
+t_env_var_list			parse_envp(const char **envp);
+void					print_env_var(t_env_var *var);
+void					add_env_var(t_env_var_list *list, t_env_var *var);
+void					init_env_var_list(t_env_var_list *list);
+void					print_env_var_list(const t_env_var_list *list);
+t_env_var				*create_env_var(const char *key, const char *value);
 
 // Tokens
 
@@ -133,7 +158,7 @@ void					tkn_init_token_list(t_token_list *tokens);
 t_token					*tkn_create_str(t_token_type type, char *s);
 t_token					*tkn_create_substr(t_token_type type, char *s,
 							ssize_t length);
-t_token_list			parse_tokens(char *s);
+t_token_list			parse_tokens(char *line);
 void					print_token(t_token *token);
 void					print_tokens(t_token_list *tokens);
 char					*get_token_type_name(enum e_TokenType type);
@@ -148,7 +173,7 @@ void					exec_exit(t_token *token);
 void					exec_export(t_token *token);
 void					exec_unset(t_token *token);
 void					exec_env(t_token *token);
-void					exec(t_token_list *tokens);
+void					exec(t_token_list *tokens, t_env_var_list *env_vars);
 void					exec_external(t_token *token);
 
 // Builtins

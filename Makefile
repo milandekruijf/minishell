@@ -13,11 +13,13 @@ SRCS = \
 	builtins/assert_is_builtin builtins/get_builtin exec/exec_cd \
 	exec/exec_echo exec/exec_env exec/exec_exit exec/exec_pwd \
 	exec/exec_export exec/exec_unset exec/exec_external \
-	tokens/parse_tokens tokens/tkn_create_str \
+	tokens/parse_tokens tokens/tkn_create_str utils/strdup \
 	tokens/tkn_add_token_to_list tokens/tkn_create_substr \
 	tokens/tkn_init_token_list utils/strndup tokens/print_token \
 	tokens/print_tokens tokens/get_token_type_name \
-	signals/handle_sigint signals/listen_sigint
+	signals/handle_sigint signals/listen_sigint env/print_envp \
+	env/parse_envp env/add_env_var env/init_env_var_list \
+	env/print_env_var env/create_env_var \
 
 TESTS = is_builtin
 
