@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   add_token.c                                        :+:    :+:            */
+/*   tkn_add_token_to_list.c                            :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
+/*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/11 15:05:38 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/11 15:09:29 by mde-krui      ########   odam.nl         */
+/*   Created: 2024/10/18 12:19:08 by dkolodze      #+#    #+#                 */
+/*   Updated: 2024/10/18 12:37:10 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	add_token(t_token **tokens, t_token *token)
+void	tkn_add_token_to_list(t_token_list *token_list, t_token *token)
 {
-	t_token	*last;
-
-	if (!tokens)
-		return ;
-	if (*tokens)
+	if (token_list->tail == NULL)
 	{
-		last = get_last_token(*tokens);
-		last->next = token;
+		token_list->head = token;
+		token_list->tail = token;
 		return ;
 	}
-	*tokens = token;
+	token_list->tail->next = token;
+	token_list->tail = token;
 }

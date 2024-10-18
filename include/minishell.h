@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/15 14:53:50 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/18 12:55:40 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ enum					e_ExitCode
 	MS_EXIT_ASSERT_FAILED
 };
 
-enum					e_TokenType
+typedef enum e_TokenType
 {
 	TKN_UNKNOWN,
 	TKN_CMD,
@@ -64,7 +64,7 @@ enum					e_TokenType
 	TKN_REDIRECT_IN,
 	TKN_REDIRECT_OUT,
 	TKN_REDIRECT_OUT_APPEND
-};
+}	t_token_type;
 
 enum					e_BuiltIn
 {
@@ -102,6 +102,12 @@ typedef struct s_token
 	struct s_token		*next;
 }						t_token;
 
+typedef struct s_token_list
+{
+	t_token	*head;
+	t_token	*tail;
+}	t_token_list;
+
 // ----------------------------------------
 // Functions
 // ----------------------------------------
@@ -111,8 +117,18 @@ typedef struct s_token
 int						ft_strcmp(const char *s1, const char *s2);
 char					**ft_strsplit(char const *s, char c);
 size_t					ft_strlen(const char *s);
+char					*ft_strndup(char *s, ssize_t n);
 void					*ms_malloc(size_t size);
 void					ms_assert(bool predicate, char *message);
+
+// Tokens
+
+void					tkn_add_token_to_list(t_token_list *token_list, \
+							t_token *token);
+void					tkn_init_token_list(t_token_list *tokens);
+t_token					*tkn_create_str(t_token_type type, char *s);
+t_token					*tkn_create_substr(t_token_type	type, char *s, \
+							ssize_t length);
 
 // Core
 

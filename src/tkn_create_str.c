@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   get_last_token.c                                   :+:    :+:            */
+/*   tkn_create_str.c                                   :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
+/*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/11 15:06:11 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/11 15:07:14 by mde-krui      ########   odam.nl         */
+/*   Created: 2024/10/18 12:40:17 by dkolodze      #+#    #+#                 */
+/*   Updated: 2024/10/18 12:51:07 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_token	*get_last_token(t_token *tokens)
+t_token	*tkn_create_str(t_token_type type, char *s)
 {
-	while (tokens)
-	{
-		if (!tokens->next)
-			return (tokens);
-		tokens = tokens->next;
-	}
-	return (tokens);
+	return (tkn_create_substr(type, s, ft_strlen(s)));
 }
