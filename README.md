@@ -45,7 +45,7 @@ Minishell is a lightweight shell program inspired by Bash, designed to provide e
 
 Minishell supports the following built-in commands:
 
-- `echo`: Displays messages, with an option for no trailing newline (-n).
+- `echo`: Displays messages, with an option for no trailing newline (`-n`).
 - `cd`: Changes the current directory using either relative or absolute paths.
 - `pwd`: Outputs the current working directory (no options).
 - `export`: Lists environment variables without options.
