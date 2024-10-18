@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:26:50 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/15 14:51:22 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/18 13:26:24 by minecraftmu   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 
 	while (true)
 	{
-		s = readline(PROMPT);
+		s = readline(MS_PROMPT);
 		if (!s)
 		{
 			continue ;

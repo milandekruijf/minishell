@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/18 13:08:06 by minecraftmu   ########   odam.nl         */
+/*   Updated: 2024/10/18 13:31:11 by minecraftmu   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@
 // Definitions
 // ----------------------------------------
 
-# ifndef PROMPT
-#  define PROMPT "ツ > "
+# ifndef MS_PROMPT
+#  define MS_PROMPT "ツ > "
 # endif
 
 // ----------------------------------------
