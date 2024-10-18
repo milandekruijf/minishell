@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/18 12:55:40 by dkolodze      ########   odam.nl         */
+/*   Updated: 2024/10/18 13:08:06 by minecraftmu   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef enum e_TokenType
 	TKN_REDIRECT_IN,
 	TKN_REDIRECT_OUT,
 	TKN_REDIRECT_OUT_APPEND
-}	t_token_type;
+}						t_token_type;
 
 enum					e_BuiltIn
 {
@@ -104,9 +104,9 @@ typedef struct s_token
 
 typedef struct s_token_list
 {
-	t_token	*head;
-	t_token	*tail;
-}	t_token_list;
+	t_token				*head;
+	t_token				*tail;
+}						t_token_list;
 
 // ----------------------------------------
 // Functions
@@ -115,7 +115,6 @@ typedef struct s_token_list
 // Utilities
 
 int						ft_strcmp(const char *s1, const char *s2);
-char					**ft_strsplit(char const *s, char c);
 size_t					ft_strlen(const char *s);
 char					*ft_strndup(char *s, ssize_t n);
 void					*ms_malloc(size_t size);
@@ -123,19 +122,16 @@ void					ms_assert(bool predicate, char *message);
 
 // Tokens
 
-void					tkn_add_token_to_list(t_token_list *token_list, \
+void					tkn_add_token_to_list(t_token_list *token_list,
 							t_token *token);
 void					tkn_init_token_list(t_token_list *tokens);
 t_token					*tkn_create_str(t_token_type type, char *s);
-t_token					*tkn_create_substr(t_token_type	type, char *s, \
+t_token					*tkn_create_substr(t_token_type type, char *s,
 							ssize_t length);
 
 // Core
 
 bool					is_builtin(t_token *token);
-t_token					*get_last_token(t_token *tokens);
-t_token					*create_token(enum e_TokenType type, char *value);
-void					add_token(t_token **tokens, t_token *token);
 void					assert_is_builtin(t_token *token);
 enum e_BuiltIn			get_builtin(t_token *token);
 void					exec_builtin(t_token *token);
@@ -149,5 +145,3 @@ void					exec_env(t_token *token);
 void					exec_external(t_token *token);
 
 #endif
-
-// Core

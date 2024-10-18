@@ -8,11 +8,12 @@
 NAME = minishell
 
 SRCS = \
-	main strcmp is_builtin create_token add_token \
-	get_last_token strlen strchr exec exec_builtin \
+	main strcmp is_builtin strlen strchr exec exec_builtin \
 	ms_assert ms_malloc assert_is_builtin get_builtin \
 	exec_cd exec_echo exec_env exec_exit exec_pwd \
-	exec_export exec_unset exec_external parse_tokens
+	exec_export exec_unset exec_external parse_tokens \
+	tkn_create_str tkn_add_token_to_list tkn_create_substr \
+	tkn_init_token_list strndup
 
 TESTS = is_builtin
 
