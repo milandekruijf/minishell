@@ -58,23 +58,23 @@ $(NAME): $(OUT)
 
 $(OUT): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(OUT) $(LDFLAGS)
-	@echo "$@: $(GREEN)compiled $@ to $(OUT)$(RESET)"
+	@echo "$(NAME): $(GREEN)compiled exec file '$(OUT)'$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(DIRS)
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "$(NAME): $(GREEN)compiled $< to $@$(RESET)"
+	@echo "$(NAME): $(GREEN)compiled '$<' -> '$@'$(RESET)"
 
 $(DIRS):
 	@mkdir -p $@
-	@echo "$(NAME): $(GREEN)created directory $@$(RESET)"
+	@echo "$(NAME): $(GREEN)created dir '$@'$(RESET)"
 
 clean:
 	@rm -rf $(OBJ_DIR)
-	@echo "$(NAME): $(GREEN)$(OBJ_DIR) has been cleaned up$(RESET)"
+	@echo "$(NAME): $(GREEN)cleaned dir '$(OBJ_DIR)'$(RESET)"
 
 fclean:
 	@rm -rf $(OUT_DIR)
-	@echo "$(NAME): $(GREEN)$(OUT_DIR) directory has been cleaned up$(RESET)"
+	@echo "$(NAME): $(GREEN)cleaned dir '$(OUT_DIR)'$(RESET)"
 
 re: fclean all
 
