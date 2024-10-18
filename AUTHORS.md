@@ -2,14 +2,14 @@
 
 - **[Daria Kolodzey](https://github.com/Oktosha)**
 
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae nunc tristique, consectetur tortor et, hendrerit mauris. Fusce vestibulum iaculis nisl, eu pretium lacus tristique vel. Nunc lacinia arcu et dictum interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In posuere felis convallis lacinia auctor. Nam scelerisque tortor vitae tortor pharetra fringilla. Donec lacinia, lorem ut accumsan dapibus, lacus purus tincidunt nisi, vitae auctor diam ipsum at sapien. Quisque eu justo et odio euismod consectetur. Mauris in porta est.
+  @Oktosha wrote most of the code for parsing tokens, which included reading the input and converting it into tokens. These tokens were then used to create useful data structures for managing the execution aspect of the system.
 
   - [LinkedIn](https://www.linkedin.com/in/dkolodzey)
   - [GitHub](https://github.com/Oktosha)
 
 - **[Milan de Kruijf](https://github.com/milandekruijf)**
 
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae nunc tristique, consectetur tortor et, hendrerit mauris. Fusce vestibulum iaculis nisl, eu pretium lacus tristique vel. Nunc lacinia arcu et dictum interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In posuere felis convallis lacinia auctor. Nam scelerisque tortor vitae tortor pharetra fringilla. Donec lacinia, lorem ut accumsan dapibus, lacus purus tincidunt nisi, vitae auctor diam ipsum at sapien. Quisque eu justo et odio euismod consectetur. Mauris in porta est.
+  @milandekruijf was primarily responsible for implementing the execution of commands, which included both built-in commands and system executables. Additionally, he developed features for managing input and output, such as pipes, redirections, and environment variables.
 
   - [LinkedIn](https://www.linkedin.com/in/milandekruijf)
   - [GitHub](https://github.com/milandekruijf)
