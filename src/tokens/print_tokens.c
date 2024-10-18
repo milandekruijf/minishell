@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   exec.c                                             :+:    :+:            */
+/*   print_tokens.c                                     :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
+/*   By: minecraftmultiplayer <minecraftmultipla      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/15 14:03:45 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/15 14:52:00 by mde-krui      ########   odam.nl         */
+/*   Created: 2024/10/18 13:32:54 by minecraftmu   #+#    #+#                 */
+/*   Updated: 2024/10/18 13:50:37 by minecraftmu   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exec(t_token **tokens)
+void	print_tokens(t_token_list *tokens)
 {
 	t_token	*token;
 
-	token = *tokens;
-	if (is_builtin(token))
+	token = tokens->head;
+	while (token->next)
 	{
-		exec_builtin(token);
-		return ;
+		print_token(token);
+		token = token->next;
 	}
-	exec_external(token);
 }

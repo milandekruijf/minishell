@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:12:31 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/18 12:56:51 by dkolodze      ########   odam.nl         */
+/*   Updated: 2024/10/18 13:49:13 by minecraftmu   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ enum e_SymbolType	get_symbol_type(char ch)
 	return (PS_SYMBOL_LETTER);
 }
 
-void	handle_empty(enum e_ParseState *state, char **start, \
-			char **s, t_token_list *token_list)
+void	handle_empty(enum e_ParseState *state, char **start, char **s,
+		t_token_list *token_list)
 {
 	if (get_symbol_type(**s) == PS_SYMBOL_WHITESPACE)
 		return ;
@@ -39,14 +39,14 @@ void	handle_empty(enum e_ParseState *state, char **start, \
 	}
 }
 
-void	handle_word(enum e_ParseState *state, char **start, \
-			char **s, t_token_list *token_list)
+void	handle_word(enum e_ParseState *state, char **start, char **s,
+		t_token_list *token_list)
 {
 	t_token	*token;
 
 	if (get_symbol_type(**s) == PS_SYMBOL_WHITESPACE)
 	{
-		token = tkn_create_substr(TKN_ARG, *start, (*s - *start));
+		token = tkn_create_substr(TKN_CMD, *start, (*s - *start));
 		tkn_add_token_to_list(token_list, token);
 		*state = PS_EMPTY;
 		*start = NULL;
@@ -65,7 +65,7 @@ void	handle_word(enum e_ParseState *state, char **start, \
 	}
 }
 
-t_token	*parse_tokens(char *s)
+t_token_list	parse_tokens(char *s)
 {
 	enum e_ParseState	state;
 	char				*start;
@@ -82,5 +82,5 @@ t_token	*parse_tokens(char *s)
 			handle_word(&state, &start, &s, &token_list);
 		++s;
 	}
-	return (token_list.head);
+	return (token_list);
 }

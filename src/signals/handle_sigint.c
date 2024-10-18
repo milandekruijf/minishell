@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   exec_exit.c                                        :+:    :+:            */
+/*   handle_sigint.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
+/*   By: minecraftmultiplayer <minecraftmultipla      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/15 14:28:38 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/15 14:34:40 by mde-krui      ########   odam.nl         */
+/*   Created: 2024/10/18 14:12:51 by minecraftmu   #+#    #+#                 */
+/*   Updated: 2024/10/18 14:13:59 by minecraftmu   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exec_exit(t_token *token)
+void	handle_sigint(int sig)
 {
-	printf("executing exit\n");
+	printf("\n");
+	rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_redisplay();
 }

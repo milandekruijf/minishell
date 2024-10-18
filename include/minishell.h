@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/18 13:31:11 by minecraftmu   ########   odam.nl         */
+/*   Updated: 2024/10/18 14:20:30 by minecraftmu   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,13 +112,18 @@ typedef struct s_token_list
 // Functions
 // ----------------------------------------
 
-// Utilities
+// Utils
 
 int						ft_strcmp(const char *s1, const char *s2);
 size_t					ft_strlen(const char *s);
 char					*ft_strndup(char *s, ssize_t n);
 void					*ms_malloc(size_t size);
 void					ms_assert(bool predicate, char *message);
+
+// Signals
+
+void					handle_sigint(int sig);
+void					listen_sigint(void);
 
 // Tokens
 
@@ -128,12 +133,13 @@ void					tkn_init_token_list(t_token_list *tokens);
 t_token					*tkn_create_str(t_token_type type, char *s);
 t_token					*tkn_create_substr(t_token_type type, char *s,
 							ssize_t length);
+t_token_list			parse_tokens(char *s);
+void					print_token(t_token *token);
+void					print_tokens(t_token_list *tokens);
+char					*get_token_type_name(enum e_TokenType type);
 
-// Core
+// Exec
 
-bool					is_builtin(t_token *token);
-void					assert_is_builtin(t_token *token);
-enum e_BuiltIn			get_builtin(t_token *token);
 void					exec_builtin(t_token *token);
 void					exec_echo(t_token *token);
 void					exec_cd(t_token *token);
@@ -142,6 +148,13 @@ void					exec_exit(t_token *token);
 void					exec_export(t_token *token);
 void					exec_unset(t_token *token);
 void					exec_env(t_token *token);
+void					exec(t_token_list *tokens);
 void					exec_external(t_token *token);
+
+// Builtins
+
+bool					is_builtin(t_token *token);
+void					assert_is_builtin(t_token *token);
+enum e_BuiltIn			get_builtin(t_token *token);
 
 #endif

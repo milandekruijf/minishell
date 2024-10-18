@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   exec.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/11 13:26:50 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/18 14:14:55 by minecraftmu   ########   odam.nl         */
+/*   Created: 2024/10/15 14:03:45 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/10/18 13:51:55 by minecraftmu   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int argc, char **argv)
+void	exec(t_token_list *tokens)
 {
-	char			*s;
-	t_token_list	tokens;
+	t_token	*token;
 
-	listen_sigint();
-	while (true)
+	token = tokens->head;
+	while (token->next)
 	{
-		s = readline(MS_PROMPT);
-		if (!s)
-			break ;
-		if (*s)
-			add_history(s);
-		tokens = parse_tokens(s);
-		free(s);
-		print_tokens(&tokens);
-		exec(&tokens);
+		if (is_builtin(token))
+		{
+			exec_builtin(token);
+			token = token->next;
+			continue ;
+		}
+		exec_external(token);
+		token = token->next;
 	}
-	return (EXIT_SUCCESS);
 }
