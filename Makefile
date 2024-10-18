@@ -36,7 +36,11 @@ CFLAGS = -I$(INC_DIR)
 LDFLAGS = -lreadline
 
 ifneq ($(STRICT), 0)
-	CFLAGS += -Wall -Wextra -Werror -g3
+	CFLAGS += -Wall -Wextra -Werror
+endif
+
+ifeq ($(DEBUG), 1)
+	CFLAGS += -g3 -fsanitize=address
 endif
 
 MAKEFLAGS += --no-print-directory
