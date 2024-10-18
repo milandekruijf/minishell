@@ -9,7 +9,7 @@ NAME = minishell
 
 SRCS = \
 	main utils/strcmp builtins/is_builtin utils/strlen utils/strchr \
-	exec/exec exec/exec_builtin utils/ms_assert utils/ms_malloc \
+	exec/exec exec/exec_builtin utils/assert utils/malloc \
 	builtins/assert_is_builtin builtins/get_builtin exec/exec_cd \
 	exec/exec_echo exec/exec_env exec/exec_exit exec/exec_pwd \
 	exec/exec_export exec/exec_unset exec/exec_external \
