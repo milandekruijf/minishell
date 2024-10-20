@@ -82,3 +82,7 @@ Minishell does not support the following:
 - Command separators (`;`)
 - Logical operators (`&&`, `||`)
 - Wildcards (`*`)
+
+# Acknowledgements
+
+- [Acutest](https://github.com/mity/acutest): A minimal C unit testing framework used for testing individual functions.
