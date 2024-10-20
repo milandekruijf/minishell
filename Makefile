@@ -19,21 +19,23 @@ SRCS = \
 	tokens/print_tokens tokens/get_token_type_name \
 	signals/handle_sigint signals/listen_sigint env/print_envp \
 	env/parse_envp env/add_env_var env/init_env_var_list \
-	env/print_env_var env/create_env_var \
+	env/print_env_var env/create_env_var tokens/free_token \
 
-TESTS = is_builtin
+TESTS = test_is_builtin
 
 SRC_DIR = src
 TESTS_DIR = tests
 INC_DIR = include
 OUT_DIR = out
 OBJ_DIR = $(OUT_DIR)/obj
+TESTS_OBJ_DIR = $(OBJ_DIR)/tests
 
 OUT = $(OUT_DIR)/$(NAME)
+TESTS_OUT = $(OUT_DIR)/$(NAME)_tests
 
 CC = cc
 CFLAGS = -I$(INC_DIR) 
-LDFLAGS = -lreadline
+LDFLAGS = -lreadline 
 
 ifneq ($(STRICT), 0)
 	CFLAGS += -Wall -Wextra -Werror
@@ -46,7 +48,9 @@ endif
 MAKEFLAGS += --no-print-directory
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(SRCS)))
-DIRS = $(sort $(dir $(OBJS)))
+TESTS_OBJS = $(filter-out $(OBJ_DIR)/main.o, $(OBJS)) $(addprefix $(TESTS_OBJ_DIR)/, $(addsuffix .o, $(TESTS)))
+
+DIRS = $(sort $(dir $(OBJS) $(TESTS_OBJS)))
 
 GREEN = \033[0;32m
 RED = \033[0;31m
@@ -64,6 +68,18 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(DIRS)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$(NAME): $(GREEN)compiled '$<' -> '$@'$(RESET)"
 
+test: $(TESTS_OUT)
+	@echo "$(NAME): $(GREEN)running tests '$(TESTS_OUT)'$(RESET)"
+	@./$(TESTS_OUT)
+
+$(TESTS_OUT): $(TESTS_OBJS)
+	@$(CC) $(CFLAGS) $(TESTS_OBJS) -o $(TESTS_OUT) $(LDFLAGS)
+	@echo "$(NAME)_test: $(GREEN)compiled test exec file '$(TESTS_OUT)'$(RESET)"
+
+$(TESTS_OBJ_DIR)/%.o: $(TESTS_DIR)/%.c | $(DIRS)
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "$(NAME): $(GREEN)compiled test '$<' -> '$@'$(RESET)"
+
 $(DIRS):
 	@mkdir -p $@
 	@echo "$(NAME): $(GREEN)created dir '$@'$(RESET)"
@@ -78,4 +94,4 @@ fclean:
 
 re: fclean all
 
-.PHONY: $(NAME) all re clean fclean
+.PHONY: $(NAME) all re clean fclean tests

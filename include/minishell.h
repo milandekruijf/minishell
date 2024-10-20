@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/18 16:41:38 by minecraftmu   ########   odam.nl         */
+/*   Updated: 2024/10/20 18:54:07 by minecraftmu   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,7 @@ t_token_list			parse_tokens(char *line);
 void					print_token(t_token *token);
 void					print_tokens(t_token_list *tokens);
 char					*get_token_type_name(enum e_TokenType type);
+void					free_token(t_token *token);
 
 // Exec
 
