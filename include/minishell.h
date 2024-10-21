@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/21 13:29:58 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/21 15:05:51 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,12 +160,13 @@ void					free_env_vars(t_env_var_list *env_vars);
 void					add_token(t_token_list *tokens, t_token *token);
 void					init_token_list(t_token_list *tokens);
 t_token					*create_token(t_token_type type, const char *value);
-t_token_list			parse_tokens(char *line);
+t_token_list			*parse_tokens(char *line);
 void					print_token(t_token *token);
 void					print_tokens(t_token_list *tokens);
 char					*get_token_type_name(enum e_TokenType type);
-void					free_token(t_token *token);
-void					free_tokens(t_token_list *tokens);
+void					free_token(t_token **token);
+t_token_list			*create_token_list(void);
+void					free_tokens(t_token_list **tokens);
 
 // Exec
 

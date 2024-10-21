@@ -6,24 +6,26 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/21 12:19:42 by dkolodze      #+#    #+#                 */
-/*   Updated: 2024/10/21 13:20:29 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/21 15:09:13 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_tokens(t_token_list *tokens)
+void	free_tokens(t_token_list **tokens)
 {
 	t_token	*curr;
 	t_token	*prev;
 
-	curr = tokens->head;
+	if (tokens == NULL || *tokens == NULL)
+		return ;
+	curr = (*tokens)->head;
 	while (curr)
 	{
 		prev = curr;
 		curr = curr->next;
-		free_token(prev);
+		free_token(&prev);
 	}
-	tokens->head = NULL;
-	tokens->tail = NULL;
+	free(*tokens);
+	*tokens = NULL;
 }

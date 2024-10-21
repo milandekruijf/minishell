@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:12:31 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/21 13:30:18 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/21 15:07:16 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,20 +78,20 @@ void	handle_state(enum e_TknParseState *state, char **start, char *s,
 		handle_word(state, start, s, token_list);
 }
 
-t_token_list	parse_tokens(char *line)
+t_token_list	*parse_tokens(char *line)
 {
 	enum e_TknParseState	state;
 	char					*start;
-	t_token_list			token_list;
+	t_token_list			*tokens;
 
-	init_token_list(&token_list);
+	tokens = create_token_list();
 	state = TKN_PS_EMPTY;
 	start = NULL;
 	while (*line)
 	{
-		handle_state(&state, &start, line, &token_list);
+		handle_state(&state, &start, line, tokens);
 		++line;
 	}
-	handle_state(&state, &start, line, &token_list);
-	return (token_list);
+	handle_state(&state, &start, line, tokens);
+	return (tokens);
 }

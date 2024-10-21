@@ -6,7 +6,7 @@
 /*   By: minecraftmultiplayer <minecraftmultipla      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/20 18:53:57 by minecraftmu   #+#    #+#                 */
-/*   Updated: 2024/10/21 14:47:12 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/21 14:54:27 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,5 @@ void	free_env_var(t_env_var *var)
 	free(var->key);
 	free(var->value);
 	free(var);
+	var = NULL;
 }

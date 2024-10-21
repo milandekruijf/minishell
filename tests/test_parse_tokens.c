@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/21 11:06:42 by dkolodze      #+#    #+#                 */
-/*   Updated: 2024/10/21 12:53:24 by dkolodze      ########   odam.nl         */
+/*   Updated: 2024/10/21 15:07:43 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ void	test_parse_tokens(void)
 {
 	t_dummy_token	answer[3] = {{TKN_CMD, "echo"}, {TKN_ARG, "Hi"}, {TKN_END,
 			NULL}};
-	t_token_list	parsed;
+	t_token_list	*parsed;
 
 	parsed = parse_tokens("echo    Hi");
-	TEST_CHECK(are_equal(answer, &parsed));
+	TEST_CHECK(are_equal(answer, parsed));
 	free_tokens(&parsed);
 }

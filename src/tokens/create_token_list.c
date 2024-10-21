@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   free_token.c                                       :+:    :+:            */
+/*   create_token_list.c                                :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: minecraftmultiplayer <minecraftmultipla      +#+                     */
+/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/20 18:53:57 by minecraftmu   #+#    #+#                 */
-/*   Updated: 2024/10/21 15:08:56 by mde-krui      ########   odam.nl         */
+/*   Created: 2024/10/21 15:05:19 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/10/21 15:05:46 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_token(t_token **token)
+t_token_list	*create_token_list(void)
 {
-	free((*token)->value);
-	free(*token);
-	*token = NULL;
+	t_token_list	*list;
+
+	list = ms_malloc(sizeof(t_token_list));
+	init_token_list(list);
+	return (list);
 }

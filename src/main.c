@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:26:50 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/18 16:36:08 by minecraftmu   ########   odam.nl         */
+/*   Updated: 2024/10/21 15:06:57 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int argc, const char **argv, const char **envp)
 {
 	char			*line;
-	t_token_list	tokens;
+	t_token_list	*tokens;
 	t_env_var_list	env_vars;
 
 	listen_sigint();
@@ -29,8 +29,11 @@ int	main(int argc, const char **argv, const char **envp)
 			add_history(line);
 		tokens = parse_tokens(line);
 		free(line);
-		print_tokens(&tokens);
-		exec(&tokens, &env_vars);
+		print_tokens(tokens);
+		exec(tokens, &env_vars);
 	}
+	free(line);
+	free_env_vars(&env_vars);
+	free_tokens(&tokens);
 	return (EXIT_SUCCESS);
 }
