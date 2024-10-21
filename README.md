@@ -11,23 +11,36 @@
 
 ## Usage
 
-Clone the repository and navigate to the project folder
+### Prerequisites
+
+Clone the repository to your local machine using the following command.
 
 ```sh
 git clone https://github.com/milandekruijf/minishell.git
-cd minishell
 ```
 
-Compile the project
+### Compiling
+
+In order to compile the Minishell program, run the following command in the project root directory.
 
 ```sh
-make
+cd minishell && make
 ```
 
-Run the minishell
+### Running
+
+After compiling, the executable `minishell` will be created in the `out` directory. Run the executable to start Minishell.
 
 ```sh
 ./out/minishell
+```
+
+### Testing
+
+Run the tests
+
+```sh
+make test
 ```
 
 ## Features
@@ -83,14 +96,8 @@ Minishell does not support the following:
 - Logical operators (`&&`, `||`)
 - Wildcards (`*`)
 
-## Testing
-
-If you would like to run the tests, you can do so by running the following command:
-
-```sh
-make test
-```
-
 ## Acknowledgements
 
 - [Acutest](https://github.com/mity/acutest): A minimal C unit testing framework used for testing individual functions.
+- [42](https://42.fr): The educational institution that inspired and supported the development of this project.
+- [Codam](https://www.codam.nl): The partner school of 42 in the Netherlands, where the project was developed.
