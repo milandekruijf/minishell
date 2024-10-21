@@ -77,7 +77,7 @@ Minishell supports the following built-in commands:
 
 ### Environment Variable Expansion
 
-- Support for environment variable expansion, allowing variables like `$USER` or custom variables (e.g., `$MS_PROMPT`) to resolve to their corresponding values.
+- Support for environment variable expansion, allowing variables like `$USER` or custom variables (e.g. `$MS_PROMPT`) to resolve to their corresponding values.
 - The special variable `$?` returns the exit status of the most recently executed foreground pipeline.
 
 ### User Keyboard Signals
