@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 13:04:13 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/21 13:32:20 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/21 14:46:31 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,5 @@ void	test_parse_envp(void)
 		i++;
 	}
 	TEST_CHECK(i == 2);
+	free_env_vars(&list);
 }

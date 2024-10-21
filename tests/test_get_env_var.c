@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 13:04:13 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/21 13:36:03 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/21 14:47:58 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ void	test_get_env_var(void)
 	TEST_CHECK(ft_strcmp(get_env_var(&list, "MS_PROMPT")->key,
 			"MS_PROMPT") == 0);
 	TEST_CHECK(ft_strcmp(get_env_var(&list, "MS_PROMPT")->value, "T") == 0);
+	free_env_vars(&list);
 }
