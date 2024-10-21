@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/21 12:43:14 by dkolodze      ########   odam.nl         */
+/*   Updated: 2024/10/21 13:13:42 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,7 @@ void					add_env_var(t_env_var_list *list, t_env_var *var);
 void					init_env_var_list(t_env_var_list *list);
 void					print_env_var_list(const t_env_var_list *list);
 t_env_var				*create_env_var(const char *key, const char *value);
+t_env_var				*get_env_var(t_env_var_list *list, const char *key);
 
 // Tokens
 

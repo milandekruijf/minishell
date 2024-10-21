@@ -20,7 +20,7 @@ SRCS = \
 	signals/handle_sigint signals/listen_sigint env/print_envp \
 	env/parse_envp env/add_env_var env/init_env_var_list \
 	env/print_env_var env/create_env_var tokens/free_token \
-	tokens/free_tokens env/print_env_var_list
+	tokens/free_tokens env/print_env_var_list env/get_env_var \
 
 TESTS = \
 	main test_parse_tokens test_is_builtin test_parse_envp \
