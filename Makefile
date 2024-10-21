@@ -125,4 +125,4 @@ re_main: fclean $(NAME)
 
 re: fclean all
 
-.PHONY: $(NAME) all re re_main clean fclean clean_tests tests lint debug run re_tests tests
+.PHONY: $(NAME) $(NAME_TESTS) all tests re re_main re_tests clean clean_tests fclean run lint debug
