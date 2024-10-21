@@ -41,7 +41,7 @@ After compiling, the executable `minishell` will be created in the `/out` direct
 
 ### Debugging
 
-In order to debug the program, you musth have [Valgrind](https://valgrind.org) installed. Run the following command in the project root directory to run in debug mode.
+In order to debug the program, you must have [Valgrind](https://valgrind.org) installed. Run the following command in the project root directory to run in debug mode.
 
 ```sh
 make debug
