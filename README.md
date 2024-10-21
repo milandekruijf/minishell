@@ -1,4 +1,4 @@
-<div align="center"><strong>Minishell</strong></div>
+<h1 align="center"><strong>Minishell</strong></h1>
 <div align="center">Minishell is a collaborative team project developed as part of the curriculum at 42 School, aimed at creating a basic shell program in C. This project serves as a practical exercise in systems programming, enabling students to deepen their understanding of operating system concepts and the C programming language.</div>
 <br />
 <div align="center">
@@ -9,7 +9,7 @@
   <a href="https://www.codam.nl">Codam</a>
 </div>
 
-# Usage
+## Usage
 
 Clone the repository and navigate to the project folder
 
@@ -83,6 +83,14 @@ Minishell does not support the following:
 - Logical operators (`&&`, `||`)
 - Wildcards (`*`)
 
-# Acknowledgements
+## Testing
+
+If you would like to run the tests, you can do so by running the following command:
+
+```sh
+make test
+```
+
+## Acknowledgements
 
 - [Acutest](https://github.com/mity/acutest): A minimal C unit testing framework used for testing individual functions.
