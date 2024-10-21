@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/21 13:13:42 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/21 13:20:16 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,10 +152,12 @@ void					init_env_var_list(t_env_var_list *list);
 void					print_env_var_list(const t_env_var_list *list);
 t_env_var				*create_env_var(const char *key, const char *value);
 t_env_var				*get_env_var(t_env_var_list *list, const char *key);
+void					free_env_var(t_env_var *var);
+void					free_env_vars(t_env_var_list *env_vars);
 
 // Tokens
 
-void					tkn_add_token_to_list(t_token_list *token_list,
+void					tkn_add_token_to_list(t_token_list *tokens,
 							t_token *token);
 void					tkn_init_token_list(t_token_list *tokens);
 t_token					*tkn_create_str(t_token_type type, char *s);
@@ -166,7 +168,7 @@ void					print_token(t_token *token);
 void					print_tokens(t_token_list *tokens);
 char					*get_token_type_name(enum e_TokenType type);
 void					free_token(t_token *token);
-void					free_tokens(t_token_list *token_list);
+void					free_tokens(t_token_list *tokens);
 
 // Exec
 

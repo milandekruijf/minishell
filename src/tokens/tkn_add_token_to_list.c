@@ -6,20 +6,20 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/18 12:19:08 by dkolodze      #+#    #+#                 */
-/*   Updated: 2024/10/18 12:37:10 by dkolodze      ########   odam.nl         */
+/*   Updated: 2024/10/21 13:20:04 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	tkn_add_token_to_list(t_token_list *token_list, t_token *token)
+void	tkn_add_token_to_list(t_token_list *tokens, t_token *token)
 {
-	if (token_list->tail == NULL)
+	if (!tokens->tail)
 	{
-		token_list->head = token;
-		token_list->tail = token;
+		tokens->head = token;
+		tokens->tail = token;
 		return ;
 	}
-	token_list->tail->next = token;
-	token_list->tail = token;
+	tokens->tail->next = token;
+	tokens->tail = token;
 }
