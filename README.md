@@ -13,10 +13,10 @@
 
 ### Prerequisites
 
-Clone the repository to your local machine using the following command.
+Clone the repository to your local machine using the following command in the terminal.
 
 ```sh
-git clone https://github.com/milandekruijf/minishell.git
+git clone https://github.com/milandekruijf/minishell.git && cd minishell
 ```
 
 ### Compiling
@@ -24,7 +24,7 @@ git clone https://github.com/milandekruijf/minishell.git
 In order to compile the Minishell program, run the following command in the project root directory.
 
 ```sh
-cd minishell && make
+make
 ```
 
 ### Running
