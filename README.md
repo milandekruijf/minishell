@@ -37,6 +37,18 @@ After compiling, the executable `minishell` will be created in the `/out` direct
 ./out/minishell
 ```
 
+*You can also just use `make run` to compile and run the program in one command.*
+
+### Debugging
+
+To run the program in debug mode, use the following command in the project root directory.
+
+```sh
+make debug
+```
+
+*This will recompile everything with the `-g3` flag and run the program using `valgrind` with the following flags: `--leak-check=full`, `--show-leak-kinds=all`, and `--track-origins=yes`*
+
 ### Testing
 
 Run the following command in the project root directory.
@@ -45,6 +57,20 @@ The tests are located in the `/tests` directory.
 ```sh
 make test
 ```
+
+*This will recompile everything with the `-g3` flag and run the program using `valgrind` with the following flags: `--leak-check=full`, `--show-leak-kinds=all`, and `--track-origins=yes`*
+
+<details>
+  <summary><u>I just want to compile the tests</u></summary>
+  
+  If you only want to compile the tests executable, run the following command in the project root directory.
+  
+  ```sh
+  make tests
+  ```
+
+  *This won't compile with any extra flags.*
+</details>
 
 ### Linting
 
@@ -112,6 +138,7 @@ Minishell does not support the following:
 ## Acknowledgements
 
 - [Acutest](https://github.com/mity/acutest): A minimal C unit testing framework used for testing individual functions.
+- [Valgrind](https://valgrind.org/): A memory debugging tool used for detecting memory leaks and errors.
 - [Norminette](https://github.com/42School/norminette): Used for linting the project according to the 42 coding standards.
 - [42](https://42.fr): The educational institution that inspired and supported the development of this project.
 - [Codam](https://www.codam.nl): The partner school of 42 in the Netherlands, where the project was developed.

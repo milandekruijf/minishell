@@ -6,6 +6,7 @@
 # ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝
 
 NAME = minishell
+NAME_TESTS = $(NAME)_tests
 
 SRCS = \
 	main utils/strcmp builtins/is_builtin utils/strlen utils/strchr \
@@ -34,7 +35,7 @@ OBJ_DIR = $(OUT_DIR)/obj
 TESTS_OBJ_DIR = $(OBJ_DIR)/tests
 
 OUT = $(OUT_DIR)/$(NAME)
-TESTS_OUT = $(OUT_DIR)/$(NAME)_tests
+TESTS_OUT = $(OUT_DIR)/$(NAME_TESTS)
 
 CC = cc
 CFLAGS = -I$(INC_DIR)
@@ -44,6 +45,10 @@ VALGRINDFLAGS = --leak-check=full --show-leak-kinds=all --track-origins=yes
 
 ifneq ($(STRICT), 0)
 	CFLAGS += -Wall -Wextra -Werror
+endif
+
+ifeq ($(DEBUG), 1)
+	CFLAGS += -g3
 endif
 
 MAKEFLAGS += --no-print-directory
@@ -57,7 +62,7 @@ GREEN = \033[0;32m
 RED = \033[0;31m
 RESET = \033[0m
 
-all: $(NAME)
+all: $(NAME) $(NAME_TESTS)
 
 $(NAME): $(OUT)
 
@@ -69,12 +74,23 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(DIRS)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$(NAME): $(GREEN)compiled '$<' -> '$@'$(RESET)"
 
-test: $(TESTS_OUT)
+run: $(OUT)
+	@echo "$(NAME): $(GREEN)running '$(OUT)'$(RESET)"
+	@./$(OUT)
+
+test:
+	@DEBUG=1 make re_tests
 	@echo "$(NAME): $(GREEN)running tests '$(TESTS_OUT)'$(RESET)"
 	@valgrind $(VALGRINDFLAGS) ./$(TESTS_OUT)
 
-debug: $(OUT)
+debug:
+	@DEBUG=1 make re_main
+	@echo "$(NAME): $(GREEN)running debug mode '$(OUT)'$(RESET)"
 	@valgrind $(VALGRINDFLAGS) ./$(OUT)
+
+tests: $(NAME_TESTS)
+
+$(NAME_TESTS): $(TESTS_OUT)
 
 $(TESTS_OUT): $(TESTS_OBJS)
 	@$(CC) $(CFLAGS) $(TESTS_OBJS) -o $(TESTS_OUT) $(LDFLAGS)
@@ -99,6 +115,14 @@ fclean:
 	@rm -rf $(OUT_DIR)
 	@echo "$(NAME): $(GREEN)cleaned dir '$(OUT_DIR)'$(RESET)"
 
+clean_tests:
+	@rm -rf $(TESTS_OBJ_DIR)
+	@echo "$(NAME)_tests: $(GREEN)cleaned dir '$(TESTS_OBJ_DIR)'$(RESET)"
+
+re_tests: fclean $(NAME_TESTS)
+
+re_main: fclean $(NAME)
+
 re: fclean all
 
-.PHONY: $(NAME) all re clean fclean tests lint debug
+.PHONY: $(NAME) all re re_main clean fclean clean_tests tests lint debug run re_tests tests
