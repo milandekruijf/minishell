@@ -41,7 +41,7 @@ After compiling, the executable `minishell` will be created in the `/out` direct
 
 ### Debugging
 
-To run the program in debug mode, use the following command in the project root directory.
+In order to debug the program, you musth have [Valgrind](https://valgrind.org) installed. Run the following command in the project root directory to run in debug mode.
 
 ```sh
 make debug
@@ -74,7 +74,7 @@ make test
 
 ### Linting
 
-In order to lint the project, you must have [Norminette](https://github.com/42School/norminette) installed. Run the following command in the project root directory.
+In order to lint the project, you must have [Norminette](https://github.com/42School/norminette) installed. Run the following command in the project root directory to lint the project.
 
 ```sh
 make lint
