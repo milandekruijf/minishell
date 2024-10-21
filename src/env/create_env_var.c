@@ -6,7 +6,7 @@
 /*   By: minecraftmultiplayer <minecraftmultipla      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/18 15:32:31 by minecraftmu   #+#    #+#                 */
-/*   Updated: 2024/10/18 16:15:55 by minecraftmu   ########   odam.nl         */
+/*   Updated: 2024/10/21 11:17:05 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,5 @@ t_env_var	*create_env_var(const char *key, const char *value)
 	var->key = ft_strdup(key);
 	var->value = ft_strdup(value);
 	var->next = NULL;
+	return (var);
 }

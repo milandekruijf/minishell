@@ -5,7 +5,9 @@
 		"stdio.h": "c",
 		"wait.h": "c",
 		"termios.h": "c",
-		"minishell.h": "c"
+		"minishell.h": "c",
+		"history.h": "c",
+		"minishell_tests.h": "c"
 	},
 	"[c]": {
     "editor.tabSize": 4,

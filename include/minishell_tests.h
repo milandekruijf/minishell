@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   exec_unset.c                                       :+:    :+:            */
+/*   minishell_tests.h                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/15 14:28:38 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/21 11:15:23 by dkolodze      ########   odam.nl         */
+/*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/10/21 12:51:48 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef MINISHELL_TESTS_H
+# define MINISHELL_TESTS_H
 
-void	exec_unset(t_token *token)
-{
-	(void)(token);
-	printf("executing unset\n");
-}
+# include "acutest.h"
+# include "minishell.h"
+
+void	test_is_builtin(void);
+void	test_parse_tokens(void);
+void	test_parse_envp(void);
+
+#endif

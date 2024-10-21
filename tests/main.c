@@ -1,19 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   exec_unset.c                                       :+:    :+:            */
+/*   main.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/15 14:28:38 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/21 11:15:23 by dkolodze      ########   odam.nl         */
+/*   Created: 2024/10/15 13:04:13 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/10/21 12:51:57 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "minishell_tests.h"
 
-void	exec_unset(t_token *token)
-{
-	(void)(token);
-	printf("executing unset\n");
-}
+TEST_LIST = {{"is_builtin", test_is_builtin}, {"parse_tokens",
+	test_parse_tokens}, {"parse_envp", test_parse_envp}, {NULL, NULL}};

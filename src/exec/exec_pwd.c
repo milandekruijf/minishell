@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:28:38 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/18 14:48:48 by minecraftmu   ########   odam.nl         */
+/*   Updated: 2024/10/21 11:15:25 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	exec_pwd(t_token *token)
 {
 	char	*cwd;
 
+	(void)(token);
 	cwd = getcwd(NULL, 0);
 	if (cwd)
 	{

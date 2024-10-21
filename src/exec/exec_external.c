@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:49:53 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/15 14:51:54 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/21 11:15:27 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,4 +14,5 @@
 
 void	exec_external(t_token *token)
 {
+	(void)(token);
 }

@@ -6,16 +6,17 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 13:04:13 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/20 18:56:01 by minecraftmu   ########   odam.nl         */
+/*   Updated: 2024/10/21 12:07:51 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "acutest.h"
-#include "minishell.h"
+#define TEST_NO_MAIN
+
+#include "minishell_tests.h"
 
 void	test_is_builtin(void)
 {
-	t_token	*token;
+	t_token *token;
 
 	token = tkn_create_str(TKN_CMD, "echo");
 	TEST_CHECK(is_builtin(token));
@@ -45,5 +46,3 @@ void	test_is_builtin(void)
 	TEST_CHECK(is_builtin(token));
 	free_token(token);
 }
-
-TEST_LIST = {{"is_builtin", test_is_builtin}, {NULL, NULL}};

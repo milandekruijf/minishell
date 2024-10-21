@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:12:31 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/18 16:34:08 by minecraftmu   ########   odam.nl         */
+/*   Updated: 2024/10/21 12:52:58 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,51 +18,64 @@ static enum e_TknParseSymbolType	get_symbol_type(char ch)
 		return (TKN_PS_SYMBOL_WHITESPACE);
 	if (ch == '|')
 		return (TKN_PS_SYMBOL_PIPE);
+	if (ch == '\0')
+		return (TKN_PS_SYMBOL_NULL_TERMINATOR);
 	return (TKN_PS_SYMBOL_LETTER);
 }
 
-static void	handle_empty(enum e_TknParseState *state, char **start, char **s,
+static void	handle_empty(enum e_TknParseState *state, char **start, char *s,
 		t_token_list *token_list)
 {
-	if (get_symbol_type(**s) == TKN_PS_SYMBOL_WHITESPACE)
+	if (get_symbol_type(*s) == TKN_PS_SYMBOL_WHITESPACE
+		|| get_symbol_type(*s) == TKN_PS_SYMBOL_NULL_TERMINATOR)
 		return ;
-	if (get_symbol_type(**s) == TKN_PS_SYMBOL_PIPE)
+	if (get_symbol_type(*s) == TKN_PS_SYMBOL_PIPE)
 	{
 		tkn_add_token_to_list(token_list, tkn_create_str(TKN_PIPE, "|"));
 		*state = TKN_PS_EMPTY;
 		*start = NULL;
 	}
-	if (get_symbol_type(**s) == TKN_PS_SYMBOL_LETTER)
+	if (get_symbol_type(*s) == TKN_PS_SYMBOL_LETTER)
 	{
 		*state = TKN_PS_WORD;
-		*start = *s;
+		*start = s;
 	}
 }
 
-static void	handle_word(enum e_TknParseState *state, char **start, char **s,
+static void	handle_word(enum e_TknParseState *state, char **start, char *s,
 		t_token_list *token_list)
 {
 	t_token	*token;
 
-	if (get_symbol_type(**s) == TKN_PS_SYMBOL_WHITESPACE)
+	if (get_symbol_type(*s) == TKN_PS_SYMBOL_WHITESPACE
+		|| get_symbol_type(*s) == TKN_PS_SYMBOL_NULL_TERMINATOR)
 	{
-		token = tkn_create_substr(TKN_CMD, *start, (*s - *start));
+		token = tkn_create_substr(TKN_CMD, *start, (s - *start));
 		tkn_add_token_to_list(token_list, token);
 		*state = TKN_PS_EMPTY;
 		*start = NULL;
 	}
-	if (get_symbol_type(**s) == TKN_PS_SYMBOL_PIPE)
+	if (get_symbol_type(*s) == TKN_PS_SYMBOL_PIPE)
 	{
-		token = tkn_create_substr(TKN_ARG, *start, (*s - *start));
+		token = tkn_create_substr(TKN_ARG, *start, (s - *start));
 		tkn_add_token_to_list(token_list, token);
 		tkn_add_token_to_list(token_list, tkn_create_str(TKN_PIPE, "|"));
 		*state = TKN_PS_EMPTY;
 		*start = NULL;
 	}
-	if (get_symbol_type(**s) == TKN_PS_SYMBOL_LETTER)
+	if (get_symbol_type(*s) == TKN_PS_SYMBOL_LETTER)
 	{
 		return ;
 	}
+}
+
+void	handle_state(enum e_TknParseState *state, char **start, char *s,
+		t_token_list *token_list)
+{
+	if (*state == TKN_PS_EMPTY)
+		handle_empty(state, start, s, token_list);
+	else if (*state == TKN_PS_WORD)
+		handle_word(state, start, s, token_list);
 }
 
 t_token_list	parse_tokens(char *line)
@@ -76,11 +89,9 @@ t_token_list	parse_tokens(char *line)
 	start = NULL;
 	while (*line)
 	{
-		if (state == TKN_PS_EMPTY)
-			handle_empty(&state, &start, &line, &token_list);
-		else if (state == TKN_PS_WORD)
-			handle_word(&state, &start, &line, &token_list);
+		handle_state(&state, &start, line, &token_list);
 		++line;
 	}
+	handle_state(&state, &start, line, &token_list);
 	return (token_list);
 }

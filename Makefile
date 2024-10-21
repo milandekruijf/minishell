@@ -1,7 +1,7 @@
-# ███╗   ███╗██╗███╗   ██╗██╗███████╗██╗  ██╗███████╗██╗     ██╗     
-# ████╗ ████║██║████╗  ██║██║██╔════╝██║  ██║██╔════╝██║     ██║     
-# ██╔████╔██║██║██╔██╗ ██║██║███████╗███████║█████╗  ██║     ██║     
-# ██║╚██╔╝██║██║██║╚██╗██║██║╚════██║██╔══██║██╔══╝  ██║     ██║     
+# ███╗   ███╗██╗███╗   ██╗██╗███████╗██╗  ██╗███████╗██╗     ██╗
+# ████╗ ████║██║████╗  ██║██║██╔════╝██║  ██║██╔════╝██║     ██║
+# ██╔████╔██║██║██╔██╗ ██║██║███████╗███████║█████╗  ██║     ██║
+# ██║╚██╔╝██║██║██║╚██╗██║██║╚════██║██╔══██║██╔══╝  ██║     ██║
 # ██║ ╚═╝ ██║██║██║ ╚████║██║███████║██║  ██║███████╗███████╗███████╗
 # ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝
 
@@ -20,8 +20,10 @@ SRCS = \
 	signals/handle_sigint signals/listen_sigint env/print_envp \
 	env/parse_envp env/add_env_var env/init_env_var_list \
 	env/print_env_var env/create_env_var tokens/free_token \
+	tokens/free_tokens env/print_env_var_list
 
-TESTS = test_is_builtin
+TESTS = \
+	main test_parse_tokens test_is_builtin test_parse_envp \
 
 SRC_DIR = src
 TESTS_DIR = tests
@@ -34,8 +36,8 @@ OUT = $(OUT_DIR)/$(NAME)
 TESTS_OUT = $(OUT_DIR)/$(NAME)_tests
 
 CC = cc
-CFLAGS = -I$(INC_DIR) 
-LDFLAGS = -lreadline 
+CFLAGS = -I$(INC_DIR)
+LDFLAGS = -lreadline
 
 ifneq ($(STRICT), 0)
 	CFLAGS += -Wall -Wextra -Werror
@@ -74,15 +76,18 @@ test: $(TESTS_OUT)
 
 $(TESTS_OUT): $(TESTS_OBJS)
 	@$(CC) $(CFLAGS) $(TESTS_OBJS) -o $(TESTS_OUT) $(LDFLAGS)
-	@echo "$(NAME)_test: $(GREEN)compiled test exec file '$(TESTS_OUT)'$(RESET)"
+	@echo "$(NAME)_tests: $(GREEN)compiled tests exec file '$(TESTS_OUT)'$(RESET)"
 
 $(TESTS_OBJ_DIR)/%.o: $(TESTS_DIR)/%.c | $(DIRS)
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "$(NAME): $(GREEN)compiled test '$<' -> '$@'$(RESET)"
+	@echo "$(NAME)_tests: $(GREEN)compiled test '$<' -> '$@'$(RESET)"
 
 $(DIRS):
 	@mkdir -p $@
 	@echo "$(NAME): $(GREEN)created dir '$@'$(RESET)"
+
+lint:
+	@norminette src include/minishell.h
 
 clean:
 	@rm -rf $(OBJ_DIR)
@@ -94,4 +99,4 @@ fclean:
 
 re: fclean all
 
-.PHONY: $(NAME) all re clean fclean tests
+.PHONY: $(NAME) all re clean fclean tests lint

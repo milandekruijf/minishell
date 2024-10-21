@@ -6,13 +6,13 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/18 12:40:32 by dkolodze      #+#    #+#                 */
-/*   Updated: 2024/10/18 12:57:22 by dkolodze      ########   odam.nl         */
+/*   Updated: 2024/10/21 12:11:23 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_token	*tkn_create_substr(t_token_type	type, char *s, ssize_t length)
+t_token	*tkn_create_substr(t_token_type type, char *s, ssize_t length)
 {
 	t_token	*token;
 
@@ -20,4 +20,5 @@ t_token	*tkn_create_substr(t_token_type	type, char *s, ssize_t length)
 	token->type = type;
 	token->value = ft_strndup(s, length);
 	token->next = NULL;
+	return (token);
 }

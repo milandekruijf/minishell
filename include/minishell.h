@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/20 18:54:07 by minecraftmu   ########   odam.nl         */
+/*   Updated: 2024/10/21 12:43:14 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ typedef enum e_TokenType
 	TKN_REDIRECT_IN_DELIM,
 	TKN_REDIRECT_IN,
 	TKN_REDIRECT_OUT,
-	TKN_REDIRECT_OUT_APPEND
+	TKN_REDIRECT_OUT_APPEND,
+	TKN_END
 }						t_token_type;
 
 enum					e_BuiltIn
@@ -88,7 +89,8 @@ enum					e_TknParseSymbolType
 {
 	TKN_PS_SYMBOL_WHITESPACE,
 	TKN_PS_SYMBOL_LETTER,
-	TKN_PS_SYMBOL_PIPE
+	TKN_PS_SYMBOL_PIPE,
+	TKN_PS_SYMBOL_NULL_TERMINATOR
 };
 
 // ----------------------------------------
@@ -163,6 +165,7 @@ void					print_token(t_token *token);
 void					print_tokens(t_token_list *tokens);
 char					*get_token_type_name(enum e_TokenType type);
 void					free_token(t_token *token);
+void					free_tokens(t_token_list *token_list);
 
 // Exec
 
