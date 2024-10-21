@@ -6,7 +6,7 @@
 /*   By: minecraftmultiplayer <minecraftmultipla      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/18 13:57:02 by minecraftmu   #+#    #+#                 */
-/*   Updated: 2024/10/18 13:57:49 by minecraftmu   ########   odam.nl         */
+/*   Updated: 2024/10/21 13:29:04 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ char	*get_token_type_name(enum e_TokenType type)
 		return ("REDIRECT_OUT");
 	if (type == TKN_REDIRECT_OUT_APPEND)
 		return ("REDIRECT_OUT_APPEND");
-	return ("INVALID");
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:12:31 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/21 12:52:58 by dkolodze      ########   odam.nl         */
+/*   Updated: 2024/10/21 13:30:18 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	handle_empty(enum e_TknParseState *state, char **start, char *s,
 		return ;
 	if (get_symbol_type(*s) == TKN_PS_SYMBOL_PIPE)
 	{
-		tkn_add_token_to_list(token_list, tkn_create_str(TKN_PIPE, "|"));
+		add_token(token_list, create_token(TKN_PIPE, "|"));
 		*state = TKN_PS_EMPTY;
 		*start = NULL;
 	}
@@ -50,16 +50,16 @@ static void	handle_word(enum e_TknParseState *state, char **start, char *s,
 	if (get_symbol_type(*s) == TKN_PS_SYMBOL_WHITESPACE
 		|| get_symbol_type(*s) == TKN_PS_SYMBOL_NULL_TERMINATOR)
 	{
-		token = tkn_create_substr(TKN_CMD, *start, (s - *start));
-		tkn_add_token_to_list(token_list, token);
+		token = create_token(TKN_CMD, ft_strndup(*start, (s - *start)));
+		add_token(token_list, token);
 		*state = TKN_PS_EMPTY;
 		*start = NULL;
 	}
 	if (get_symbol_type(*s) == TKN_PS_SYMBOL_PIPE)
 	{
-		token = tkn_create_substr(TKN_ARG, *start, (s - *start));
-		tkn_add_token_to_list(token_list, token);
-		tkn_add_token_to_list(token_list, tkn_create_str(TKN_PIPE, "|"));
+		token = create_token(TKN_ARG, ft_strndup(*start, (s - *start)));
+		add_token(token_list, token);
+		add_token(token_list, create_token(TKN_PIPE, "|"));
 		*state = TKN_PS_EMPTY;
 		*start = NULL;
 	}
@@ -84,7 +84,7 @@ t_token_list	parse_tokens(char *line)
 	char					*start;
 	t_token_list			token_list;
 
-	tkn_init_token_list(&token_list);
+	init_token_list(&token_list);
 	state = TKN_PS_EMPTY;
 	start = NULL;
 	while (*line)

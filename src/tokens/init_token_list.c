@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   tkn_create_str.c                                   :+:    :+:            */
+/*   init_token_list.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/18 12:40:17 by dkolodze      #+#    #+#                 */
-/*   Updated: 2024/10/18 12:51:07 by dkolodze      ########   odam.nl         */
+/*   Created: 2024/10/18 12:13:24 by dkolodze      #+#    #+#                 */
+/*   Updated: 2024/10/21 13:29:48 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_token	*tkn_create_str(t_token_type type, char *s)
+void	init_token_list(t_token_list *tokens)
 {
-	return (tkn_create_substr(type, s, ft_strlen(s)));
+	tokens->head = NULL;
+	tokens->tail = NULL;
 }

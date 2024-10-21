@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   tkn_init_token_list.c                              :+:    :+:            */
+/*   create_token.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/18 12:13:24 by dkolodze      #+#    #+#                 */
-/*   Updated: 2024/10/18 12:36:50 by dkolodze      ########   odam.nl         */
+/*   Created: 2024/10/18 12:40:17 by dkolodze      #+#    #+#                 */
+/*   Updated: 2024/10/21 13:28:32 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	tkn_init_token_list(t_token_list *tokens)
+t_token	*create_token(t_token_type type, const char *value)
 {
-	tokens->head = NULL;
-	tokens->tail = NULL;
+	t_token	*token;
+
+	token = ms_malloc(sizeof(t_token));
+	token->type = type;
+	token->value = ft_strdup(value);
+	token->next = NULL;
+	return (token);
 }
