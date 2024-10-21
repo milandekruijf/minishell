@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   create_env_var.c                                   :+:    :+:            */
+/*   create_env_var_list.c                              :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: minecraftmultiplayer <minecraftmultipla      +#+                     */
+/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/18 15:32:31 by minecraftmu   #+#    #+#                 */
-/*   Updated: 2024/10/21 15:12:06 by mde-krui      ########   odam.nl         */
+/*   Created: 2024/10/21 15:05:19 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/10/21 15:15:17 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_env_var	*create_env_var(const char *key, const char *value)
+t_env_var_list	*create_env_var_list(void)
 {
-	t_env_var	*var;
+	t_env_var_list	*list;
 
-	var = ms_malloc(sizeof(t_env_var));
-	var->key = ft_strdup(key);
-	var->value = ft_strdup(value);
-	var->next = NULL;
-	return (var);
+	list = ms_malloc(sizeof(t_env_var_list));
+	init_env_var_list(list);
+	return (list);
 }

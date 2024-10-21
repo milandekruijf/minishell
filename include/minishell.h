@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/21 15:05:51 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/21 15:13:18 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,15 +145,16 @@ void					listen_sigint(void);
 // Env
 
 void					print_envp(const char **envp);
-t_env_var_list			parse_envp(const char **envp);
+t_env_var_list			*parse_envp(const char **envp);
 void					print_env_var(t_env_var *var);
 void					add_env_var(t_env_var_list *list, t_env_var *var);
 void					init_env_var_list(t_env_var_list *list);
 void					print_env_var_list(const t_env_var_list *list);
 t_env_var				*create_env_var(const char *key, const char *value);
 t_env_var				*get_env_var(t_env_var_list *list, const char *key);
-void					free_env_var(t_env_var *var);
-void					free_env_vars(t_env_var_list *env_vars);
+void					free_env_var(t_env_var **var);
+void					free_env_vars(t_env_var_list **env_vars);
+t_env_var_list			*create_env_var_list(void);
 
 // Tokens
 
