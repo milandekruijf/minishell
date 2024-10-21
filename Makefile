@@ -40,12 +40,10 @@ CC = cc
 CFLAGS = -I$(INC_DIR)
 LDFLAGS = -lreadline
 
+VALGRINDFLAGS = --leak-check=full --show-leak-kinds=all --track-origins=yes
+
 ifneq ($(STRICT), 0)
 	CFLAGS += -Wall -Wextra -Werror
-endif
-
-ifeq ($(DEBUG), 1)
-	CFLAGS += -g3 -fsanitize=address
 endif
 
 MAKEFLAGS += --no-print-directory
@@ -73,7 +71,10 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(DIRS)
 
 test: $(TESTS_OUT)
 	@echo "$(NAME): $(GREEN)running tests '$(TESTS_OUT)'$(RESET)"
-	@./$(TESTS_OUT)
+	@valgrind $(VALGRINDFLAGS) ./$(TESTS_OUT)
+
+debug: $(OUT)
+	@valgrind $(VALGRINDFLAGS) ./$(OUT)
 
 $(TESTS_OUT): $(TESTS_OBJS)
 	@$(CC) $(CFLAGS) $(TESTS_OBJS) -o $(TESTS_OUT) $(LDFLAGS)
@@ -100,4 +101,4 @@ fclean:
 
 re: fclean all
 
-.PHONY: $(NAME) all re clean fclean tests lint
+.PHONY: $(NAME) all re clean fclean tests lint debug

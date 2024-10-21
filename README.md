@@ -27,9 +27,11 @@ In order to compile the Minishell program, run the following command in the proj
 make
 ```
 
+*Compiles using the `cc` compiler with the flags `-Wall`, `-Wextra`, and `-Werror`.
+
 ### Running
 
-After compiling, the executable `minishell` will be created in the `out` directory. Run the executable to start Minishell.
+After compiling, the executable `minishell` will be created in the `/out` directory. Run the executable to start Minishell.
 
 ```sh
 ./out/minishell
@@ -37,11 +39,22 @@ After compiling, the executable `minishell` will be created in the `out` directo
 
 ### Testing
 
-Run the tests
+Run the following command in the project root directory.
+The tests are located in the `/tests` directory.
 
 ```sh
 make test
 ```
+
+### Linting
+
+In order to lint the project, you must have [Norminette](https://github.com/42School/norminette) installed. Run the following command in the project root directory.
+
+```sh
+make lint
+```
+
+*The `/tests` directory is excluded from linting as it contains test files that do not have to adhere to the 42 coding standards.*
 
 ## Features
 
@@ -99,5 +112,6 @@ Minishell does not support the following:
 ## Acknowledgements
 
 - [Acutest](https://github.com/mity/acutest): A minimal C unit testing framework used for testing individual functions.
+- [Norminette](https://github.com/42School/norminette): Used for linting the project according to the 42 coding standards.
 - [42](https://42.fr): The educational institution that inspired and supported the development of this project.
 - [Codam](https://www.codam.nl): The partner school of 42 in the Netherlands, where the project was developed.
