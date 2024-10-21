@@ -24,6 +24,7 @@ SRCS = \
 
 TESTS = \
 	main test_parse_tokens test_is_builtin test_parse_envp \
+	test_get_env_var
 
 SRC_DIR = src
 TESTS_DIR = tests

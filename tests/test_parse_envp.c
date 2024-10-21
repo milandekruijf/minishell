@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 13:04:13 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/21 12:51:43 by dkolodze      ########   odam.nl         */
+/*   Updated: 2024/10/21 13:32:20 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 
 void	test_parse_envp(void)
 {
-	const char		**dummy_envp = (const char *[]){"STRICT=0", "MS_PROMPT=T",
-				NULL};
+	const char		**dummy_envp;
 	t_env_var_list	list;
 	t_env_var		*var;
 	int				i;
 
+	dummy_envp = (const char *[]){"STRICT=0", "MS_PROMPT=T", NULL};
 	i = 1;
 	list = parse_envp(dummy_envp);
 	var = list.head;
