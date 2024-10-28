@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:03:45 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/21 13:12:19 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/28 12:37:56 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,6 @@ void	exec(t_token_list *tokens, t_env_var_list *env_vars)
 	token = tokens->head;
 	while (token)
 	{
-		if (is_builtin(token))
-		{
-			exec_builtin(token);
-			token = token->next;
-			continue ;
-		}
-		exec_external(token);
 		token = token->next;
 	}
 }

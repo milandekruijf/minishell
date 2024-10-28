@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:26:50 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/28 12:20:56 by dkolodze      ########   odam.nl         */
+/*   Updated: 2024/10/28 13:00:34 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ int	main(int argc, const char **argv, const char **envp)
 	char			*line;
 	t_token_list	*tokens;
 	t_env_var_list	*env_vars;
+	char			**t_envp;
 
 	listen_sigint();
 	env_vars = parse_envp(envp);
+	t_envp = env_var_list_to_envp(env_vars);
+	print_envp((const char **)t_envp);
 	while (true)
 	{
 		line = readline(MS_PROMPT);

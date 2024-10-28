@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   assert_is_builtin.c                                :+:    :+:            */
+/*   strncat.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/15 14:14:20 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/15 14:15:41 by mde-krui      ########   odam.nl         */
+/*   Created: 2023/10/02 16:55:53 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/10/28 12:59:40 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	assert_is_builtin(t_token *token)
+char	*ft_strncat(char *dest, const char *src, size_t n)
 {
-	ms_assert(is_builtin(token), "Token is not a builtin command");
+	char	*tmp;
+
+	tmp = dest;
+	while (*tmp)
+		tmp++;
+	while (*src && n > 0)
+	{
+		*tmp++ = *src++;
+		n--;
+	}
+	*tmp = '\0';
+	return (dest);
 }

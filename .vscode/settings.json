@@ -15,7 +15,8 @@
 		"functional": "c",
 		"tuple": "c",
 		"type_traits": "c",
-		"utility": "c"
+		"utility": "c",
+		"stddef.h": "c"
 	},
 	"[c]": {
 		"editor.tabSize": 4,

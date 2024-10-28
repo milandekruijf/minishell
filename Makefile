@@ -9,21 +9,21 @@ NAME = minishell
 NAME_TESTS = $(NAME)_tests
 
 SRCS = \
-	main utils/strcmp builtins/is_builtin utils/strlen utils/strchr \
-	exec/exec exec/exec_builtin utils/assert utils/malloc \
-	builtins/assert_is_builtin builtins/get_builtin exec/exec_cd \
-	exec/exec_echo exec/exec_env exec/exec_exit exec/exec_pwd \
-	exec/exec_export exec/exec_unset exec/exec_external \
-	tokens/parse_tokens tokens/create_token utils/strdup \
-	tokens/add_token tokens/init_token_list utils/strndup \
-	tokens/print_token tokens/print_tokens tokens/get_token_type_name \
+	main utils/strcmp utils/strlen utils/strchr \
+	exec/exec utils/assert utils/malloc exec/exec_cd exec/exec_echo \
+	exec/exec_env exec/exec_exit exec/exec_pwd exec/exec_export \
+	exec/exec_unset tokens/parse_tokens \
+	tokens/create_token utils/strdup tokens/add_token \
+	tokens/init_token_list utils/strndup tokens/print_token \
+	tokens/print_tokens tokens/get_token_type_name \
 	signals/handle_sigint signals/listen_sigint env/print_envp \
 	env/parse_envp env/add_env_var env/init_env_var_list \
 	env/print_env_var env/create_env_var tokens/free_token \
 	tokens/free_tokens env/print_env_var_list env/get_env_var \
 	env/free_env_var env/free_env_vars tokens/create_token_list \
 	env/create_env_var_list env/env_var_list_to_envp \
-	env/get_env_var_list_size
+	env/get_env_var_list_size utils/strcat utils/strncat \
+	utils/strcpy
 
 TESTS = \
 	main test_parse_tokens test_parse_envp test_get_env_var

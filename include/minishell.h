@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/28 12:25:26 by dkolodze      ########   odam.nl         */
+/*   Updated: 2024/10/28 13:05:07 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,9 @@ char					*ft_strndup(const char *s, ssize_t n);
 void					*ms_malloc(size_t size);
 void					ms_assert(bool predicate, const char *message);
 char					*ft_strdup(const char *s);
+char					*ft_strcat(char *dest, const char *src);
+char					*ft_strncat(char *dest, const char *src, size_t n);
+char					*ft_strcpy(char *dest, const char *src);
 
 // Signals
 
@@ -184,7 +187,6 @@ void					free_tokens(t_token_list **tokens);
 
 // Exec
 
-void					exec_builtin(t_token *token);
 void					exec_echo(t_token *token);
 void					exec_cd(t_token *token);
 void					exec_pwd(t_token *token);
@@ -193,12 +195,5 @@ void					exec_export(t_token *token);
 void					exec_unset(t_token *token);
 void					exec_env(t_token *token);
 void					exec(t_token_list *tokens, t_env_var_list *env_vars);
-void					exec_external(t_token *token);
-
-// Builtins
-
-bool					is_builtin(t_token *token);
-void					assert_is_builtin(t_token *token);
-enum e_BuiltIn			get_builtin(t_token *token);
 
 #endif
