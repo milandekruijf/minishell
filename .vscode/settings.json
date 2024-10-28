@@ -16,7 +16,8 @@
 		"tuple": "c",
 		"type_traits": "c",
 		"utility": "c",
-		"stddef.h": "c"
+		"stddef.h": "c",
+		"cstdlib": "c"
 	},
 	"[c]": {
 		"editor.tabSize": 4,
