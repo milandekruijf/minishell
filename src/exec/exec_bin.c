@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   exec_binary.c                                      :+:    :+:            */
+/*   exec_bin.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/28 13:29:03 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/28 15:50:58 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/28 15:51:46 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exec_binary(t_cmd *cmd, t_env_var_list *env_vars)
+void	exec_bin(t_cmd *cmd, t_env_var_list *env_vars)
 {
 	pid_t	pid;
 	int		err;

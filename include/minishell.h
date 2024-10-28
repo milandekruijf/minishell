@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/28 15:42:39 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/28 15:51:51 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,7 @@ void					free_tkn_list(t_tkn_list **list);
 void					exec(t_cmd_list *cmds, t_env_var_list *env_vars);
 void					exec_exit(void);
 void					exec_pwd(void);
-void					exec_binary(t_cmd *cmd, t_env_var_list *env_vars);
+void					exec_bin(t_cmd *cmd, t_env_var_list *env_vars);
 
 // It (Interactive)
 

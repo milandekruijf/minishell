@@ -11,7 +11,7 @@ NAME_TESTS = $(NAME)_tests
 SRCS = \
 	main utils/strcmp utils/strlen utils/strchr \
 	exec/exec utils/assert utils/malloc  \
-	exec/exec_exit exec/exec_pwd exec/exec_binary \
+	exec/exec_exit exec/exec_pwd exec/exec_bin \
 	tkns/parse_tkns it/run_it \
 	tkns/create_tkn utils/strdup tkns/add_tkn \
 	tkns/init_tkn_list utils/strndup tkns/print_tkn \
