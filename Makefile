@@ -25,7 +25,7 @@ SRCS = \
 	env/get_env_var_list_size utils/strcat utils/strncat \
 	utils/strcpy cmds/add_cmd cmds/create_cmd_list cmds/create_empty_cmd \
 	cmds/init_cmd_list cmds/parse_cmds cmds/free_cmd_list \
-	cmds/free_cmd utils/strtok run/run_line
+	cmds/free_cmd utils/strtok run/run_c
 
 TESTS = \
 	main test_parse_tokens test_parse_envp test_get_env_var
