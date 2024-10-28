@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   run_it.c                                           :+:    :+:            */
+/*   join_argv.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/28 13:43:36 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/28 14:30:00 by dkolodze      ########   odam.nl         */
+/*   Created: 2024/10/28 16:08:05 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/10/28 16:12:26 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	run_it(t_env_var_list *env_vars)
+char	*join_argv(int argc, const char **argv)
 {
-	char		*line;
-	t_tkn_list	*tkns;
-	t_cmd_list	*cmds;
+	size_t	size;
+	int		i;
+	char	*joined_argv;
 
-	while (true)
+	i = 0;
+	size = 0;
+	while (i < argc)
+		size += ft_strlen(argv[i++]) + 1;
+	joined_argv = ms_malloc(size * sizeof(char));
+	joined_argv[0] = '\0';
+	i = 1;
+	while (i < argc)
 	{
-		line = readline(MS_PROMPT);
-		if (!line)
-			break ;
-		if (*line)
-			add_history(line);
-		tkns = parse_tkns(line);
-		cmds = parse_cmds(tkns);
-		free(line);
-		print_tkn_list(tkns);
-		exec(cmds, env_vars);
-		free_tkn_list(&tkns);
-		free_cmd_list(&cmds);
+		ft_strcat(joined_argv, argv[i]);
+		if (i < argc - 1)
+			ft_strcat(joined_argv, " ");
+		i++;
 	}
+	return (joined_argv);
 }

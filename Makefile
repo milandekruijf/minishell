@@ -12,7 +12,7 @@ SRCS = \
 	main utils/strcmp utils/strlen utils/strchr \
 	exec/exec utils/assert utils/malloc  \
 	exec/exec_exit exec/exec_pwd exec/exec_bin \
-	tkns/parse_tkns it/run_it \
+	tkns/parse_tkns run/run_it utils/join_argv \
 	tkns/create_tkn utils/strdup tkns/add_tkn \
 	tkns/init_tkn_list utils/strndup tkns/print_tkn \
 	tkns/print_tkn_list tkns/get_tkn_type_name \
@@ -25,7 +25,7 @@ SRCS = \
 	env/get_env_var_list_size utils/strcat utils/strncat \
 	utils/strcpy cmds/add_cmd cmds/create_cmd_list cmds/create_empty_cmd \
 	cmds/init_cmd_list cmds/parse_cmds cmds/free_cmd_list \
-	cmds/free_cmd utils/strtok
+	cmds/free_cmd utils/strtok run/run_line
 
 TESTS = \
 	main test_parse_tokens test_parse_envp test_get_env_var

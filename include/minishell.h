@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/28 15:51:51 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/28 16:12:32 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,7 @@ char					*ft_strcat(char *dest, const char *src);
 char					*ft_strncat(char *dest, const char *src, size_t n);
 char					*ft_strcpy(char *dest, const char *src);
 char					*ft_strtok(char *str, const char delim);
+char					*join_argv(int argc, const char **argv);
 
 // Signals
 
@@ -203,8 +204,9 @@ void					exec_exit(void);
 void					exec_pwd(void);
 void					exec_bin(t_cmd *cmd, t_env_var_list *env_vars);
 
-// It (Interactive)
+// Run
 
 void					run_it(t_env_var_list *env_vars);
+void					run_line(char *line, t_env_var_list *env_vars);
 
 #endif
