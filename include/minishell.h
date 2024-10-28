@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/28 13:05:07 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/28 13:45:07 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,18 +96,18 @@ enum					e_TknParseSymbolType
 // Structures
 // ----------------------------------------
 
-typedef struct s_token
+typedef struct s_tkn
 {
 	enum e_TokenType	type;
 	char				*value;
-	struct s_token		*next;
-}						t_token;
+	struct s_tkn		*next;
+}						t_tkn;
 
-typedef struct s_token_list
+typedef struct s_tkn_list
 {
-	struct s_token		*head;
-	struct s_token		*tail;
-}						t_token_list;
+	struct s_tkn		*head;
+	struct s_tkn		*tail;
+}						t_tkn_list;
 
 typedef struct s_env_var
 {
@@ -122,21 +122,31 @@ typedef struct s_env_var_list
 	struct s_env_var	*tail;
 }						t_env_var_list;
 
-typedef struct s_command
+typedef struct s_cmd
 {
 	char				**argv;
-	struct s_command	*next;
-}						t_command;
+	struct s_cmd		*next;
+}						t_cmd;
 
-typedef struct s_command_list
+typedef struct s_cmd_list
 {
-	t_command			*head;
-	t_command			*tail;
-}						t_command_list;
+	struct s_cmd		*head;
+	struct s_cmd		*tail;
+}						t_cmd_list;
 
 // ----------------------------------------
 // Functions
 // ----------------------------------------
+
+// Cmds
+
+void					add_cmd(t_cmd_list *list, t_cmd *cmd);
+t_cmd					*create_cmd(const char **argv);
+t_cmd_list				*create_cmd_list(void);
+void					init_cmd_list(t_cmd_list *list);
+t_cmd_list				*parse_cmds(t_tkn_list *tokens);
+void					free_cmd_list(t_cmd_list **list);
+void					free_cmd(t_cmd **cmd);
 
 // Utils
 
@@ -149,7 +159,6 @@ void					ms_assert(bool predicate, const char *message);
 char					*ft_strdup(const char *s);
 char					*ft_strcat(char *dest, const char *src);
 char					*ft_strncat(char *dest, const char *src, size_t n);
-char					*ft_strcpy(char *dest, const char *src);
 
 // Signals
 
@@ -167,33 +176,33 @@ void					print_env_var_list(const t_env_var_list *list);
 t_env_var				*create_env_var(const char *key, const char *value);
 t_env_var				*get_env_var(t_env_var_list *list, const char *key);
 void					free_env_var(t_env_var **var);
-void					free_env_vars(t_env_var_list **env_vars);
+void					free_env_var_list(t_env_var_list **list);
 t_env_var_list			*create_env_var_list(void);
 char					**env_var_list_to_envp(t_env_var_list *list);
 size_t					get_env_var_list_size(t_env_var_list *list);
 
-// Tokens
+// Tkns
 
-void					add_token(t_token_list *tokens, t_token *token);
-void					init_token_list(t_token_list *tokens);
-t_token					*create_token(t_token_type type, const char *value);
-t_token_list			*parse_tokens(char *line);
-void					print_token(t_token *token);
-void					print_tokens(t_token_list *tokens);
-char					*get_token_type_name(enum e_TokenType type);
-void					free_token(t_token **token);
-t_token_list			*create_token_list(void);
-void					free_tokens(t_token_list **tokens);
+void					add_tkn(t_tkn_list *tokens, t_tkn *tkn);
+void					init_tkn_list(t_tkn_list *list);
+t_tkn					*create_tkn(t_token_type type, const char *value);
+t_tkn_list				*parse_tkns(char *line);
+void					print_tkn(t_tkn *tkn);
+void					print_tkn_list(t_tkn_list *list);
+char					*get_tkn_type_name(enum e_TokenType type);
+void					free_tkn(t_tkn **tkn);
+t_tkn_list				*create_tkn_list(void);
+void					free_tkn_list(t_tkn_list **list);
 
 // Exec
 
-void					exec_echo(t_token *token);
-void					exec_cd(t_token *token);
-void					exec_pwd(t_token *token);
-void					exec_exit(t_token *token);
-void					exec_export(t_token *token);
-void					exec_unset(t_token *token);
-void					exec_env(t_token *token);
-void					exec(t_token_list *tokens, t_env_var_list *env_vars);
+void					exec(t_cmd_list *cmds, t_env_var_list *env_vars);
+void					exec_exit(void);
+void					exec_pwd(void);
+void					exec_binary(t_cmd *cmd, t_env_var_list *env_vars);
+
+// It (Interactive)
+
+void					run_it(t_env_var_list *env_vars);
 
 #endif

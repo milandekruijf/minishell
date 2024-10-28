@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   print_tokens.c                                     :+:    :+:            */
+/*   create_cmd.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: minecraftmultiplayer <minecraftmultipla      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/18 13:32:54 by minecraftmu   #+#    #+#                 */
-/*   Updated: 2024/10/21 12:35:22 by dkolodze      ########   odam.nl         */
+/*   Created: 2024/10/18 15:32:31 by minecraftmu   #+#    #+#                 */
+/*   Updated: 2024/10/28 13:23:05 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_tokens(t_token_list *tokens)
+t_cmd	*create_cmd(const char **argv)
 {
-	t_token	*token;
+	t_cmd	*cmd;
 
-	token = tokens->head;
-	while (token)
-	{
-		print_token(token);
-		token = token->next;
-	}
+	cmd = ms_malloc(sizeof(t_cmd));
+	cmd->argv = argv;
+	cmd->next = NULL;
+	return (cmd);
 }

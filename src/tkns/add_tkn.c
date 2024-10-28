@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   exec_export.c                                      :+:    :+:            */
+/*   add_token.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
+/*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/15 14:28:38 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/21 11:15:28 by dkolodze      ########   odam.nl         */
+/*   Created: 2024/10/18 12:19:08 by dkolodze      #+#    #+#                 */
+/*   Updated: 2024/10/28 13:35:19 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exec_export(t_token *token)
+void	add_tkn(t_tkn_list *tokens, t_tkn *tkn)
 {
-	(void)(token);
-	printf("executing export\n");
+	if (!tokens->tail)
+	{
+		tokens->head = tkn;
+		tokens->tail = tkn;
+		return ;
+	}
+	tokens->tail->next = tkn;
+	tokens->tail = tkn;
 }

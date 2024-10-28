@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   create_token.c                                     :+:    :+:            */
+/*   free_tkn_list.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/18 12:40:17 by dkolodze      #+#    #+#                 */
-/*   Updated: 2024/10/21 13:28:32 by mde-krui      ########   odam.nl         */
+/*   Created: 2024/10/21 12:19:42 by dkolodze      #+#    #+#                 */
+/*   Updated: 2024/10/28 13:28:53 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_token	*create_token(t_token_type type, const char *value)
+void	free_tkn_list(t_tkn_list **list)
 {
-	t_token	*token;
+	t_tkn	*curr;
+	t_tkn	*prev;
 
-	token = ms_malloc(sizeof(t_token));
-	token->type = type;
-	token->value = ft_strdup(value);
-	token->next = NULL;
-	return (token);
+	if (list == NULL || *list == NULL)
+		return ;
+	curr = (*list)->head;
+	while (curr)
+	{
+		prev = curr;
+		curr = curr->next;
+		free_token(&prev);
+	}
+	free(*list);
+	*list = NULL;
 }

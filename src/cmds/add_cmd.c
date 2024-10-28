@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   free_tokens.c                                      :+:    :+:            */
+/*   add_cmd.c                                          :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
+/*   By: minecraftmultiplayer <minecraftmultipla      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/21 12:19:42 by dkolodze      #+#    #+#                 */
-/*   Updated: 2024/10/21 15:09:13 by mde-krui      ########   odam.nl         */
+/*   Created: 2024/10/18 15:18:56 by minecraftmu   #+#    #+#                 */
+/*   Updated: 2024/10/28 13:23:37 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_tokens(t_token_list **tokens)
+void	add_cmd(t_cmd_list *list, t_cmd *cmd)
 {
-	t_token	*curr;
-	t_token	*prev;
-
-	if (tokens == NULL || *tokens == NULL)
-		return ;
-	curr = (*tokens)->head;
-	while (curr)
+	if (!list->tail)
 	{
-		prev = curr;
-		curr = curr->next;
-		free_token(&prev);
+		list->head = cmd;
+		list->tail = cmd;
+		return ;
 	}
-	free(*tokens);
-	*tokens = NULL;
+	list->tail->next = cmd;
+	list->tail = cmd;
 }

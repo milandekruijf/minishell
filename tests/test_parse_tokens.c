@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/21 11:06:42 by dkolodze      #+#    #+#                 */
-/*   Updated: 2024/10/28 12:27:28 by dkolodze      ########   odam.nl         */
+/*   Updated: 2024/10/28 13:31:28 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ typedef struct s_dummy_token
 	char			*value;
 }					t_dummy_token;
 
-bool	are_equal(t_dummy_token *expected, t_token_list *actual_list)
+bool	are_equal(t_dummy_token *expected, t_tkn_list *actual_list)
 {
 	int		i;
-	t_token	*actual;
+	t_tkn	*actual;
 
 	i = 0;
 	actual = actual_list->head;
@@ -48,7 +48,7 @@ bool	are_equal(t_dummy_token *expected, t_token_list *actual_list)
 	if (expected[i].type != TKN_END)
 	{
 		printf("expected more tokens, got only %d\n", i);
-		print_tokens(actual_list);
+		print_tkn_list(actual_list);
 		return (false);
 	}
 	return (true);
@@ -58,9 +58,9 @@ void	test_parse_tokens(void)
 {
 	t_dummy_token	answer[3] = {{TKN_WORD, "echo"}, {TKN_WORD, "Hi"}, {TKN_END,
 			NULL}};
-	t_token_list	*parsed;
+	t_tkn_list	*parsed;
 
 	parsed = parse_tokens("echo    Hi");
 	TEST_CHECK(are_equal(answer, parsed));
-	free_tokens(&parsed);
+	free_tkn_list(&parsed);
 }

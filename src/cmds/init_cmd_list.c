@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   exec_exit.c                                        :+:    :+:            */
+/*   init_cmd_list.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
+/*   By: minecraftmultiplayer <minecraftmultipla      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/15 14:28:38 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/28 13:27:12 by mde-krui      ########   odam.nl         */
+/*   Created: 2024/10/18 15:20:13 by minecraftmu   #+#    #+#                 */
+/*   Updated: 2024/10/28 13:19:35 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exec_exit(void)
+void	init_cmd_list(t_cmd_list *list)
 {
-	(void)(token);
-	printf("exit\n");
-	exit(EXIT_SUCCESS);
+	list->head = NULL;
+	list->tail = NULL;
 }

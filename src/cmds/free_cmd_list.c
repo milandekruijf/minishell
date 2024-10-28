@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   exec_echo.c                                        :+:    :+:            */
+/*   free_cmd_list.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
+/*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/15 14:28:38 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/21 11:11:25 by dkolodze      ########   odam.nl         */
+/*   Created: 2024/10/21 12:19:42 by dkolodze      #+#    #+#                 */
+/*   Updated: 2024/10/28 13:26:20 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exec_echo(t_token *token)
+void	free_cmd_list(t_cmd_list **list)
 {
-	(void)(token);
-	printf("executing echo\n");
+	t_cmd	*curr;
+	t_cmd	*prev;
+
+	if (list == NULL || *list == NULL)
+		return ;
+	curr = (*list)->head;
+	while (curr)
+	{
+		prev = curr;
+		curr = curr->next;
+		free_env_var(&prev);
+	}
+	free(*list);
+	*list = NULL;
 }

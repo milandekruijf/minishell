@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   free_token.c                                       :+:    :+:            */
+/*   free_tkn.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: minecraftmultiplayer <minecraftmultipla      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/20 18:53:57 by minecraftmu   #+#    #+#                 */
-/*   Updated: 2024/10/21 15:08:56 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/28 13:42:27 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_token(t_token **token)
+void	free_tkn(t_tkn **tkn)
 {
-	free((*token)->value);
-	free(*token);
-	*token = NULL;
+	free((*tkn)->value);
+	free(*tkn);
+	*tkn = NULL;
 }

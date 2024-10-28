@@ -12,18 +12,20 @@ SRCS = \
 	main utils/strcmp utils/strlen utils/strchr \
 	exec/exec utils/assert utils/malloc exec/exec_cd exec/exec_echo \
 	exec/exec_env exec/exec_exit exec/exec_pwd exec/exec_export \
-	exec/exec_unset tokens/parse_tokens \
-	tokens/create_token utils/strdup tokens/add_token \
-	tokens/init_token_list utils/strndup tokens/print_token \
-	tokens/print_tokens tokens/get_token_type_name \
+	exec/exec_unset tkns/parse_tkns it/run_it \
+	tkns/create_tkn utils/strdup tkns/add_tkn \
+	tkns/init_tkn_list utils/strndup tkns/print_tkn \
+	tkns/print_tkn_list tkns/get_tkn_type_name \
 	signals/handle_sigint signals/listen_sigint env/print_envp \
 	env/parse_envp env/add_env_var env/init_env_var_list \
-	env/print_env_var env/create_env_var tokens/free_token \
-	tokens/free_tokens env/print_env_var_list env/get_env_var \
-	env/free_env_var env/free_env_vars tokens/create_token_list \
+	env/print_env_var env/create_env_var tkns/free_tkn \
+	tkns/free_tkn_list env/print_env_var_list env/get_env_var \
+	env/free_env_var env/free_env_var_list tkns/create_tkn_list \
 	env/create_env_var_list env/env_var_list_to_envp \
 	env/get_env_var_list_size utils/strcat utils/strncat \
-	utils/strcpy
+	utils/strcpy cmds/add_cmd cmds/create_cmd_list cmds/create_cmd \
+	cmds/init_cmd_list cmds/parse_cmds cmds/free_cmd_list \
+	cmds/free_cmd
 
 TESTS = \
 	main test_parse_tokens test_parse_envp test_get_env_var

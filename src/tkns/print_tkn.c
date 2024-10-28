@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   print_token.c                                      :+:    :+:            */
+/*   print_tkn.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: minecraftmultiplayer <minecraftmultipla      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/18 13:32:54 by minecraftmu   #+#    #+#                 */
-/*   Updated: 2024/10/18 13:58:31 by minecraftmu   ########   odam.nl         */
+/*   Updated: 2024/10/28 13:32:45 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_token(t_token *token)
+void	print_tkn(t_tkn *tkn)
 {
 	char	*type_name;
 
-	type_name = get_token_type_name(token->type);
-	printf("Token { Type: %s, Value: %s }\n", type_name, token->value);
+	type_name = get_token_type_name(tkn->type);
+	printf("Token { Type: %s, Value: %s }\n", type_name, tkn->value);
 }

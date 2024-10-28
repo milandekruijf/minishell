@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   exec_exit.c                                        :+:    :+:            */
+/*   create_tkn.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
+/*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/15 14:28:38 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/28 13:27:12 by mde-krui      ########   odam.nl         */
+/*   Created: 2024/10/18 12:40:17 by dkolodze      #+#    #+#                 */
+/*   Updated: 2024/10/28 13:36:33 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exec_exit(void)
+t_tkn	*create_tkn(t_token_type type, const char *value)
 {
-	(void)(token);
-	printf("exit\n");
-	exit(EXIT_SUCCESS);
+	t_tkn	*token;
+
+	token = ms_malloc(sizeof(t_tkn));
+	token->type = type;
+	token->value = ft_strdup(value);
+	token->next = NULL;
+	return (token);
 }

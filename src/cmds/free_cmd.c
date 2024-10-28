@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   exec_env.c                                         :+:    :+:            */
+/*   free_cmd.c                                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
+/*   By: minecraftmultiplayer <minecraftmultipla      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/15 14:28:38 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/21 11:11:49 by dkolodze      ########   odam.nl         */
+/*   Created: 2024/10/20 18:53:57 by minecraftmu   #+#    #+#                 */
+/*   Updated: 2024/10/28 13:27:02 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exec_env(t_token *token)
+void	free_cmd(t_cmd **cmd)
 {
-	(void)(token);
-	printf("executing env\n");
+	free((*cmd)->argv);
+	free(*cmd);
+	*cmd = NULL;
 }

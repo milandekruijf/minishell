@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   add_token.c                                        :+:    :+:            */
+/*   create_tkn_list.c                                  :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
+/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/18 12:19:08 by dkolodze      #+#    #+#                 */
-/*   Updated: 2024/10/21 13:21:53 by mde-krui      ########   odam.nl         */
+/*   Created: 2024/10/21 15:05:19 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/10/28 13:37:34 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	add_token(t_token_list *tokens, t_token *token)
+t_tkn_list	*create_tkn_list(void)
 {
-	if (!tokens->tail)
-	{
-		tokens->head = token;
-		tokens->tail = token;
-		return ;
-	}
-	tokens->tail->next = token;
-	tokens->tail = token;
+	t_tkn_list	*list;
+
+	list = ms_malloc(sizeof(t_tkn_list));
+	init_token_list(list);
+	return (list);
 }

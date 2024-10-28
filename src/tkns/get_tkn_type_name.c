@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   get_token_type_name.c                              :+:    :+:            */
+/*   get_tkn_type_name.c                                :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: minecraftmultiplayer <minecraftmultipla      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/18 13:57:02 by minecraftmu   #+#    #+#                 */
-/*   Updated: 2024/10/28 12:26:58 by dkolodze      ########   odam.nl         */
+/*   Updated: 2024/10/28 13:38:36 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*get_token_type_name(enum e_TokenType type)
+char	*get_tkn_type_name(enum e_TokenType type)
 {
 	if (type == TKN_UNKNOWN)
 		return ("UNKNOWN");
