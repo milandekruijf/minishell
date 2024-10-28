@@ -22,11 +22,11 @@ SRCS = \
 	env/print_env_var env/create_env_var tokens/free_token \
 	tokens/free_tokens env/print_env_var_list env/get_env_var \
 	env/free_env_var env/free_env_vars tokens/create_token_list \
-	env/create_env_var_list
+	env/create_env_var_list env/env_var_list_to_envp \
+	env/get_env_var_list_size
 
 TESTS = \
-	main test_parse_tokens test_is_builtin test_parse_envp \
-	test_get_env_var
+	main test_parse_tokens test_parse_envp test_get_env_var
 
 SRC_DIR = src
 TESTS_DIR = tests

@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   get_env_var_list_size.c                            :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
+/*   By: minecraftmultiplayer <minecraftmultipla      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/15 13:04:13 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/28 12:28:53 by dkolodze      ########   odam.nl         */
+/*   Created: 2024/10/20 18:53:57 by minecraftmu   #+#    #+#                 */
+/*   Updated: 2024/10/28 12:25:06 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell_tests.h"
+#include "minishell.h"
 
-TEST_LIST = {{"parse_tokens", test_parse_tokens}, {"parse_envp",
-	test_parse_envp}, {"get_env_var", test_get_env_var}, {NULL, NULL}};
+size_t	get_env_var_list_size(t_env_var_list *list)
+{
+	t_env_var	*var;
+	size_t		size;
+
+	size = 0;
+	var = list->head;
+	while (var)
+	{
+		size++;
+		var = var->next;
+	}
+	return (size);
+}

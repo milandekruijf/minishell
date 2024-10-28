@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:12:31 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/21 15:07:16 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/28 12:26:11 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ static void	handle_word(enum e_TknParseState *state, char **start, char *s,
 	if (get_symbol_type(*s) == TKN_PS_SYMBOL_WHITESPACE
 		|| get_symbol_type(*s) == TKN_PS_SYMBOL_NULL_TERMINATOR)
 	{
-		token = create_token(TKN_CMD, ft_strndup(*start, (s - *start)));
+		token = create_token(TKN_WORD, ft_strndup(*start, (s - *start)));
 		add_token(token_list, token);
 		*state = TKN_PS_EMPTY;
 		*start = NULL;
 	}
 	if (get_symbol_type(*s) == TKN_PS_SYMBOL_PIPE)
 	{
-		token = create_token(TKN_ARG, ft_strndup(*start, (s - *start)));
+		token = create_token(TKN_WORD, ft_strndup(*start, (s - *start)));
 		add_token(token_list, token);
 		add_token(token_list, create_token(TKN_PIPE, "|"));
 		*state = TKN_PS_EMPTY;

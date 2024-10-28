@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:26:50 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/21 15:13:03 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/28 12:20:56 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,8 @@ int	main(int argc, const char **argv, const char **envp)
 		free(line);
 		print_tokens(tokens);
 		exec(tokens, env_vars);
+		free_tokens(&tokens);
 	}
-	free(line);
 	free_env_vars(&env_vars);
-	free_tokens(&tokens);
 	return (EXIT_SUCCESS);
 }

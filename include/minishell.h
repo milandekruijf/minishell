@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/21 15:13:18 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/28 12:25:26 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ enum					e_ExitCode
 typedef enum e_TokenType
 {
 	TKN_UNKNOWN,
-	TKN_CMD,
-	TKN_ARG,
+	TKN_WORD,
 	TKN_FILE,
 	TKN_PIPE,
 	TKN_REDIRECT_IN_DELIM,
@@ -123,6 +122,18 @@ typedef struct s_env_var_list
 	struct s_env_var	*tail;
 }						t_env_var_list;
 
+typedef struct s_command
+{
+	char				**argv;
+	struct s_command	*next;
+}						t_command;
+
+typedef struct s_command_list
+{
+	t_command			*head;
+	t_command			*tail;
+}						t_command_list;
+
 // ----------------------------------------
 // Functions
 // ----------------------------------------
@@ -155,6 +166,8 @@ t_env_var				*get_env_var(t_env_var_list *list, const char *key);
 void					free_env_var(t_env_var **var);
 void					free_env_vars(t_env_var_list **env_vars);
 t_env_var_list			*create_env_var_list(void);
+char					**env_var_list_to_envp(t_env_var_list *list);
+size_t					get_env_var_list_size(t_env_var_list *list);
 
 // Tokens
 

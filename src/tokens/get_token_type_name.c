@@ -6,7 +6,7 @@
 /*   By: minecraftmultiplayer <minecraftmultipla      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/18 13:57:02 by minecraftmu   #+#    #+#                 */
-/*   Updated: 2024/10/21 13:29:04 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/28 12:26:58 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ char	*get_token_type_name(enum e_TokenType type)
 {
 	if (type == TKN_UNKNOWN)
 		return ("UNKNOWN");
-	if (type == TKN_CMD)
-		return ("CMD");
-	if (type == TKN_ARG)
-		return ("ARG");
+	if (type == TKN_WORD)
+		return ("WORD");
 	if (type == TKN_PIPE)
 		return ("PIPE");
 	if (type == TKN_REDIRECT_IN)
