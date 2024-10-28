@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:03:45 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/28 13:40:57 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/28 14:39:22 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ void	exec(t_cmd_list *cmds, t_env_var_list *env_vars)
 			exec_pwd();
 		else
 			exec_binary(cmd, env_vars);
+		cmd = cmd->next;
 	}
 }

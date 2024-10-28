@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/28 13:45:07 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/28 14:33:21 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ typedef struct s_cmd_list
 // Cmds
 
 void					add_cmd(t_cmd_list *list, t_cmd *cmd);
-t_cmd					*create_cmd(const char **argv);
+t_cmd					*create_empty_cmd(void);
 t_cmd_list				*create_cmd_list(void);
 void					init_cmd_list(t_cmd_list *list);
 t_cmd_list				*parse_cmds(t_tkn_list *tokens);
@@ -159,6 +159,7 @@ void					ms_assert(bool predicate, const char *message);
 char					*ft_strdup(const char *s);
 char					*ft_strcat(char *dest, const char *src);
 char					*ft_strncat(char *dest, const char *src, size_t n);
+char					*ft_strcpy(char *dest, const char *src);
 
 // Signals
 

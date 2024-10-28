@@ -10,9 +10,9 @@ NAME_TESTS = $(NAME)_tests
 
 SRCS = \
 	main utils/strcmp utils/strlen utils/strchr \
-	exec/exec utils/assert utils/malloc exec/exec_cd exec/exec_echo \
-	exec/exec_env exec/exec_exit exec/exec_pwd exec/exec_export \
-	exec/exec_unset tkns/parse_tkns it/run_it \
+	exec/exec utils/assert utils/malloc  \
+	exec/exec_exit exec/exec_pwd exec/exec_binary \
+	tkns/parse_tkns it/run_it \
 	tkns/create_tkn utils/strdup tkns/add_tkn \
 	tkns/init_tkn_list utils/strndup tkns/print_tkn \
 	tkns/print_tkn_list tkns/get_tkn_type_name \
@@ -23,7 +23,7 @@ SRCS = \
 	env/free_env_var env/free_env_var_list tkns/create_tkn_list \
 	env/create_env_var_list env/env_var_list_to_envp \
 	env/get_env_var_list_size utils/strcat utils/strncat \
-	utils/strcpy cmds/add_cmd cmds/create_cmd_list cmds/create_cmd \
+	utils/strcpy cmds/add_cmd cmds/create_cmd_list cmds/create_empty_cmd \
 	cmds/init_cmd_list cmds/parse_cmds cmds/free_cmd_list \
 	cmds/free_cmd
 
