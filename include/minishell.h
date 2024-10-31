@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/31 13:57:50 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/10/31 14:42:14 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,10 +172,11 @@ void					listen_sigint(void);
 
 void					print_envp(const char **envp);
 t_env_var_list			*parse_envp(const char **envp);
-void					print_env_var(t_env_var *var);
+void					print_env_var(t_env_var *var, bool pretty);
 void					add_env_var(t_env_var_list *list, t_env_var *var);
 void					init_env_var_list(t_env_var_list *list);
-void					print_env_var_list(const t_env_var_list *list);
+void					print_env_var_list(const t_env_var_list *list,
+							bool pretty);
 t_env_var				*create_env_var(const char *key, const char *value);
 t_env_var				*get_env_var(t_env_var_list *list, const char *key);
 void					free_env_var(t_env_var **var);
@@ -183,6 +184,9 @@ void					free_env_var_list(t_env_var_list **list);
 t_env_var_list			*create_env_var_list(void);
 char					**env_var_list_to_envp(t_env_var_list *list);
 size_t					get_env_var_list_size(t_env_var_list *list);
+void					unset_env_var(t_env_var_list *list, const char *key);
+void					set_env_var(t_env_var_list *list, const char *key,
+							const char *value);
 
 // Tkns
 
@@ -203,6 +207,9 @@ void					exec(t_cmd_list *cmds, t_env_var_list *env_vars);
 void					exec_exit(void);
 void					exec_pwd(void);
 void					exec_bin(t_cmd *cmd, t_env_var_list *env_vars);
+void					exec_env(t_env_var_list *env_vars);
+void					exec_unset(const char **argv, t_env_var_list *env_vars);
+void					exec_export(const char **argv, t_env_var_list *list);
 
 // Run
 

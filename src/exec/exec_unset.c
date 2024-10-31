@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   print_env_var.c                                    :+:    :+:            */
+/*   exec_unset.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: minecraftmultiplayer <minecraftmultipla      +#+                     */
+/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/18 15:21:22 by minecraftmu   #+#    #+#                 */
-/*   Updated: 2024/10/31 14:28:14 by anonymous     ########   odam.nl         */
+/*   Created: 2024/10/15 14:28:38 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/10/31 14:40:13 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_env_var(t_env_var *var, bool pretty)
+void	exec_unset(const char **argv, t_env_var_list *env_vars)
 {
-	if (pretty)
-		printf("EnvVar { Key: %s, Value: %s }\n", var->key, var->value);
-	else
-		printf("%s=%s\n", var->key, var->value);
+	int	i;
+
+	i = 1;
+	while (argv[i])
+	{
+		unset_env_var(env_vars, argv[i]);
+		i++;
+	}
 }
