@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/31 15:31:58 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/10/31 15:36:38 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,7 @@ char					*join_argv(int argc, const char **argv);
 
 char					*get_cwd(t_env_var_list *env_vars);
 void					set_cwd(char *path, t_env_var_list *env_vars);
+char					*ensure_cwd(t_env_var_list *env_vars);
 
 // Signals
 
