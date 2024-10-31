@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/28 16:01:09 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/31 14:07:53 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/10/31 14:24:29 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	run_c(char *c, t_env_var_list *env_vars)
 	tkns = parse_tkns(c);
 	cmds = parse_cmds(tkns);
 	free(c);
-	print_tkn_list(tkns);
 	exec(cmds, env_vars);
 	free_tkn_list(&tkns);
 	free_cmd_list(&cmds);
