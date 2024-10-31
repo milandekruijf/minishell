@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:03:45 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/31 14:40:53 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/10/31 15:17:27 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@ void	exec(t_cmd_list *cmds, t_env_var_list *env_vars)
 		if (ft_strcmp(cmd->argv[0], "exit") == 0)
 			exec_exit();
 		else if (ft_strcmp(cmd->argv[0], "pwd") == 0)
-			exec_pwd();
+			exec_pwd(env_vars);
 		else if (ft_strcmp(cmd->argv[0], "env") == 0)
 			exec_env(env_vars);
 		else if (ft_strcmp(cmd->argv[0], "unset") == 0)
 			exec_unset((const char **)cmd->argv, env_vars);
 		else if (ft_strcmp(cmd->argv[0], "export") == 0)
 			exec_export((const char **)cmd->argv, env_vars);
+		else if (ft_strcmp(cmd->argv[0], "cd") == 0)
+			exec_cd((const char **)cmd->argv, env_vars);
 		else
 			exec_bin(cmd, env_vars);
 		cmd = cmd->next;
