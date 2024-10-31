@@ -1,0 +1,27 @@
+{
+  "name": "minishell",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "minishell",
+  "shutdownAction": "stopCompose",
+  "remoteEnv": { "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}" },
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools-extension-pack",
+        "oscarmulder.codamheader",
+        "keyhr.42-c-format",
+        "ms-vscode.makefile-tools"
+      ],
+      "settings": {
+        "[c]": {
+          "editor.defaultFormatter": "keyhr.42-c-format"
+        },
+        "makefile.configureOnOpen": true,
+        "files.insertFinalNewline": true
+      }
+    }
+  }
+}
+
+

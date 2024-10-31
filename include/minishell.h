@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/28 16:21:09 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/31 13:57:50 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,5 +208,9 @@ void					exec_bin(t_cmd *cmd, t_env_var_list *env_vars);
 
 void					run_it(t_env_var_list *env_vars);
 void					run_c(char *c, t_env_var_list *env_vars);
+
+// Err
+
+void					print_err(const char *message, ...);
 
 #endif

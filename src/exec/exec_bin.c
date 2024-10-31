@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/28 13:29:03 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/28 15:51:46 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/10/31 14:05:12 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ void	exec_bin(t_cmd *cmd, t_env_var_list *env_vars)
 			ft_strcat(full_path, "/");
 			ft_strcat(full_path, cmd->argv[0]);
 			err = execve(full_path, cmd->argv, env_var_list_to_envp(env_vars));
-			if (!err)
+			if (err != -1)
 				exit(EXIT_SUCCESS);
 			path = ft_strtok(NULL, ':');
 		}
+		printf("minishell: %s: command not found\n", cmd->argv[0]);
 		exit(EXIT_FAILURE);
 	}
 	else
