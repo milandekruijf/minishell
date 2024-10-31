@@ -6,13 +6,13 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:28:38 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/31 14:41:17 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/10/31 15:30:33 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exec_export(const char **argv, t_env_var_list *list)
+void	exec_export(const char **argv, t_env_var_list *env_vars)
 {
 	int		i;
 	char	*key;
@@ -24,9 +24,9 @@ void	exec_export(const char **argv, t_env_var_list *list)
 		key = ft_strtok(ft_strdup(argv[i]), '=');
 		value = ft_strtok(NULL, '=');
 		if (value)
-			set_env_var(list, key, value);
+			set_env_var(env_vars, key, value);
 		else
-			set_env_var(list, key, "");
+			set_env_var(env_vars, key, "");
 		free(key);
 		i++;
 	}
