@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/31 14:42:14 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/10/31 14:56:43 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,9 +207,12 @@ void					exec(t_cmd_list *cmds, t_env_var_list *env_vars);
 void					exec_exit(void);
 void					exec_pwd(void);
 void					exec_bin(t_cmd *cmd, t_env_var_list *env_vars);
+int						exec_rel(t_cmd *cmd, t_env_var_list *env_vars);
+int						exec_abs(t_cmd *cmd, t_env_var_list *env_vars);
 void					exec_env(t_env_var_list *env_vars);
 void					exec_unset(const char **argv, t_env_var_list *env_vars);
 void					exec_export(const char **argv, t_env_var_list *list);
+void					exec_cd(void);
 
 // Run
 
