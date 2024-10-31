@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/28 13:14:27 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/28 14:41:04 by dkolodze      ########   odam.nl         */
+/*   Updated: 2024/10/31 14:17:53 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	copy_words(t_tkn *start, t_tkn *end, char **dest)
 			dest[i++] = ft_strdup(tkn->value);
 		tkn = tkn->next;
 	}
+	dest[i] = NULL;
 }
 
 t_cmd_list	*parse_cmds(t_tkn_list *tkns)
