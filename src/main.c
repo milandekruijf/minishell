@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:26:50 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/04 11:41:34 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/11/04 12:39:36 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,12 @@ int	main(int argc, const char **argv, const char **envp)
 {
 	t_env_var_list	*env_vars;
 
-	printf("%s\n", ft_sprintf("Hello, %s!", "world"));
 	listen_sigint();
 	env_vars = parse_envp(envp);
 	if (argc == 1)
 		run_it(env_vars);
 	else
-		run_c(join_argv(argc, argv), env_vars);
+		run_c(join_argv(argv), env_vars);
 	free_env_var_list(&env_vars);
 	return (EXIT_SUCCESS);
 }

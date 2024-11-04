@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/04 11:56:41 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/11/04 12:28:52 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,21 +155,27 @@ int						ft_strcmp(const char *s1, const char *s2);
 size_t					ft_strlen(const char *s);
 char					*ft_strndup(const char *s, ssize_t n);
 void					*ms_malloc(size_t size);
-void					ms_assert(bool predicate, const char *message);
+void					ms_assert(bool predicate, const char *format, ...);
 char					*ft_strdup(const char *s);
 char					*ft_strcat(char *dest, const char *src);
 char					*ft_strncat(char *dest, const char *src, size_t n);
 char					*ft_strcpy(char *dest, const char *src);
 char					*ft_strtok(char *str, const char delim);
-char					*join_argv(int argc, const char **argv);
+char					*join_argv(const char **argv);
 char					*ft_sprintf(const char *format, ...);
 void					*ft_memcpy(void *dest, const void *src, size_t n);
+void					*ft_realloc(void *ptr, size_t size);
+void					ft_puts(const char *s, int fd);
 
 // Cwd
 
 char					*get_cwd(void);
 void					set_cwd(char *cwd, t_env_var_list *env_vars);
-char					*ensure_cwd(t_env_var_list *env_vars);
+
+// Err
+
+void					exit_err(int status, const char *message, ...);
+void					print_err(const char *message, ...);
 
 // Signals
 
@@ -215,7 +221,7 @@ void					free_tkn_list(t_tkn_list **list);
 
 void					exec(t_cmd_list *cmds, t_env_var_list *env_vars);
 void					exec_exit(void);
-void					exec_pwd(t_env_var_list *env_vars);
+void					exec_pwd(void);
 void					exec_bin(t_cmd *cmd, t_env_var_list *env_vars);
 int						exec_path(t_cmd *cmd, t_env_var_list *env_vars);
 int						exec_abs(t_cmd *cmd, t_env_var_list *env_vars);
@@ -223,15 +229,12 @@ void					exec_env(t_env_var_list *env_vars);
 void					exec_unset(const char **argv, t_env_var_list *env_vars);
 void					exec_export(const char **argv,
 							t_env_var_list *env_vars);
+void					exec_echo(const char **argv, t_env_var_list *env_vars);
 void					exec_cd(const char **argv, t_env_var_list *env_vars);
 
 // Run
 
 void					run_it(t_env_var_list *env_vars);
 void					run_c(char *c, t_env_var_list *env_vars);
-
-// Err
-
-void					print_err(const char *message, ...);
 
 #endif

@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   join_argv.c                                        :+:    :+:            */
+/*   puts.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/28 16:08:05 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/04 12:45:38 by mde-krui      ########   odam.nl         */
+/*   Created: 2023/10/02 17:35:12 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/11/04 12:09:16 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*join_argv(const char **argv)
+void	ft_puts(const char *s, int fd)
 {
-	size_t	size;
-	int		i;
-	char	*res;
-
-	i = 0;
-	size = 0;
-	while (argv[i])
-		size += ft_strlen(argv[i++]) + 1;
-	res = ms_malloc(size * sizeof(char));
-	res[0] = '\0';
-	i = 1;
-	while (argv[i])
-	{
-		ft_strcat(res, argv[i]);
-		if (argv[i + 1])
-			ft_strcat(res, " ");
-		i++;
-	}
-	return (res);
+	write(fd, s, sizeof(char) * ft_strlen(s));
 }

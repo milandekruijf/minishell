@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ensure_cwd.c                                       :+:    :+:            */
+/*   exit_err.c                                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
+/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/31 15:35:46 by anonymous     #+#    #+#                 */
-/*   Updated: 2024/10/31 15:36:15 by anonymous     ########   odam.nl         */
+/*   Created: 2024/11/04 12:10:27 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/11/04 12:15:27 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ensure_cwd(t_env_var_list *env_vars)
+void	exit_err(int status, const char *message, ...)
 {
-	char	*cwd;
+	va_list	args;
 
-	cwd = get_cwd(env_vars);
-	ms_assert(cwd != NULL, "Failed to get current working directory");
-	return (cwd);
+	va_start(args, message);
+	print_err(message, args);
+	va_end(args);
+	exit(status);
 }

@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:28:38 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/04 11:55:34 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/11/04 12:28:10 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void	exec_cd(const char **argv, t_env_var_list *env_vars)
 	if (argv[1] == NULL)
 		path = ensure_env_var(env_vars, "HOME", "cd: HOME not set")->value;
 	else
-		path = argv[1];
+		path = (char *)argv[1];
 	set_cwd(path, env_vars);
 }
