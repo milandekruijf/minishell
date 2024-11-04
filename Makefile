@@ -34,6 +34,7 @@ SRCS = \
 	utils/strncpy utils/isspace utils/abs utils/itoa \
 	utils/ndigits utils/strcspn exit/exit_msg utils/dprintf \
 	utils/vsprintf utils/vsnprintf utils/snprintf utils/vdprintf \
+	utils/strfmt err/vexit_err err/vprint_err
 
 TESTS = \
 	main test_parse_tokens test_parse_envp test_get_env_var \

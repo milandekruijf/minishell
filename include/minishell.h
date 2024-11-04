@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/04 15:50:07 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/11/04 16:06:21 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@
 # endif
 
 # define MS_WHITESPACE_CHARS " \t\n\v\f\r"
+
+# ifndef MS_BUFFER_SIZE
+#  define MS_BUFFER_SIZE 1024
+# endif
 
 // ----------------------------------------
 // Enums
@@ -185,6 +189,7 @@ int						ft_vsnprintf(char *str, size_t size, const char *format,
 int						ft_snprintf(char *str, size_t size, const char *format,
 							...);
 int						ft_vdprintf(int fd, const char *format, va_list ap);
+char					*strfmt(const char *format, ...);
 
 // Cwd
 
@@ -193,6 +198,8 @@ void					set_cwd(char *cwd, t_env_var_list *env_vars);
 
 // Err
 
+void					vexit_err(int status, const char *format, va_list ap);
+void					vprint_err(const char *format, va_list ap);
 void					exit_err(int status, const char *format, ...);
 void					print_err(const char *format, ...);
 

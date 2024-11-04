@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/11/04 12:10:27 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/04 15:12:45 by mde-krui      ########   odam.nl         */
+/*   Created: 2024/11/04 16:03:42 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/11/04 16:03:47 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	exit_err(int status, const char *format, ...)
 {
-	va_list	args;
+	va_list	ap;
 
-	va_start(args, format);
-	print_err(format, args);
-	va_end(args);
-	exit(status);
+	va_start(ap, format);
+	vexit_err(status, format, ap);
+	va_end(ap);
 }

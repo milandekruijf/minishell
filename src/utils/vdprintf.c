@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/04 14:49:19 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/04 15:42:19 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/11/04 16:05:36 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_vdprintf(int fd, const char *format, va_list ap)
 {
-	char	buffer[100];
+	char	buffer[MS_BUFFER_SIZE];
 	int		len;
 
 	len = ft_vsprintf(buffer, format, ap);
