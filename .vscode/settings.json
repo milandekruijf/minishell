@@ -1,8 +1,0 @@
-{
-  "files.associations": {
-    "*.excalidraw": "json",
-    "*.excalidrawlib": "json",
-    ".env*": "dotenv",
-    "minishell.h": "c"
-  }
-}
