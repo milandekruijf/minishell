@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:12:31 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/28 16:20:07 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/11/04 13:47:46 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static enum e_TknParseSymbolType	get_symbol_type(char ch)
 {
-	if (ch == ' ')
+	if (ft_isspace(ch))
 		return (TKN_PS_SYMBOL_WHITESPACE);
 	if (ch == '|')
 		return (TKN_PS_SYMBOL_PIPE);

@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/04 12:28:52 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/11/04 13:47:13 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,8 @@ char					*ft_sprintf(const char *format, ...);
 void					*ft_memcpy(void *dest, const void *src, size_t n);
 void					*ft_realloc(void *ptr, size_t size);
 void					ft_puts(const char *s, int fd);
+char					*ft_strncpy(char *dest, const char *src, size_t n);
+bool					ft_isspace(int c);
 
 // Cwd
 
@@ -236,5 +238,9 @@ void					exec_cd(const char **argv, t_env_var_list *env_vars);
 
 void					run_it(t_env_var_list *env_vars);
 void					run_c(char *c, t_env_var_list *env_vars);
+
+// Vars
+
+char					*expand_vars(const char *str, t_env_var_list *env_vars);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/21 13:07:14 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/21 13:14:24 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/11/04 13:38:41 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ t_env_var	*get_env_var(t_env_var_list *list, const char *key)
 {
 	t_env_var	*var;
 
+	if (!key)
+		return (NULL);
 	var = list->head;
 	while (var)
 	{

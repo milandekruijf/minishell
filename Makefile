@@ -30,7 +30,8 @@ SRCS = \
 	env/set_env_var exec/exec_cd exec/exec_abs exec/exec_path \
 	cwd/get_cwd cwd/set_cwd env/ensure_env_var \
 	utils/sprintf utils/realloc utils/memcpy utils/puts \
-	err/print_err err/exit_err exec/exec_echo
+	err/print_err err/exit_err exec/exec_echo vars/expand_vars \
+	utils/strncpy utils/isspace
 
 TESTS = \
 	main test_parse_tokens test_parse_envp test_get_env_var
