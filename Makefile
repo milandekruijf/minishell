@@ -31,7 +31,8 @@ SRCS = \
 	cwd/get_cwd cwd/set_cwd env/ensure_env_var \
 	utils/sprintf utils/realloc utils/memcpy utils/puts \
 	err/print_err err/exit_err exec/exec_echo vars/expand_vars \
-	utils/strncpy utils/isspace
+	utils/strncpy utils/isspace utils/abs utils/itoa \
+	utils/ndigits
 
 TESTS = \
 	main test_parse_tokens test_parse_envp test_get_env_var

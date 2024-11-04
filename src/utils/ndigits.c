@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   assert.c                                           :+:    :+:            */
+/*   ndigits.c                                          :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
+/*   By: muijf <muijf@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/15 14:11:56 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/04 13:51:59 by mde-krui      ########   odam.nl         */
+/*   Created: 2023/11/21 17:13:17 by muijf         #+#    #+#                 */
+/*   Updated: 2024/11/04 14:02:19 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ms_assert(bool predicate, const char *format, ...)
+int	ndigits(int n, int base)
 {
-	va_list	args;
+	int	res;
 
-	if (!predicate)
+	res = 1;
+	while (n / base)
 	{
-		va_start(args, format);
-		exit_err(MS_EXIT_ASSERT_FAILED, format, args);
+		res++;
+		n /= base;
 	}
+	return (res);
 }

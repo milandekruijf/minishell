@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   assert.c                                           :+:    :+:            */
+/*   abs.c                                              :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/15 14:11:56 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/04 13:51:59 by mde-krui      ########   odam.nl         */
+/*   Created: 2023/11/06 11:22:21 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/11/04 13:55:58 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ms_assert(bool predicate, const char *format, ...)
+int	ft_abs(int n)
 {
-	va_list	args;
-
-	if (!predicate)
-	{
-		va_start(args, format);
-		exit_err(MS_EXIT_ASSERT_FAILED, format, args);
-	}
+	if (n < 0)
+		return (-n);
+	return (n);
 }

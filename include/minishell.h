@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/04 13:47:13 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/11/04 14:02:29 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,9 @@ void					*ft_realloc(void *ptr, size_t size);
 void					ft_puts(const char *s, int fd);
 char					*ft_strncpy(char *dest, const char *src, size_t n);
 bool					ft_isspace(int c);
+char					*ft_itoa(int n);
+int						ft_abs(int n);
+int						ndigits(int n, int base);
 
 // Cwd
 
