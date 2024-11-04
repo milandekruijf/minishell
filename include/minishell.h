@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/04 14:28:55 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/11/04 15:50:07 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@
 enum					e_ExitCode
 {
 	MS_EXIT_SUCCESS = 0,
-	MS_EXIT_MALLOC_ERROR,
-	MS_EXIT_ASSERT_FAILED
+	MS_EXIT_ASSERT_FAILED,
+	MS_EXIT_CMD_NOT_FOUND,
 };
 
 typedef enum e_TokenType
@@ -150,6 +150,10 @@ t_cmd_list				*parse_cmds(t_tkn_list *tokens);
 void					free_cmd_list(t_cmd_list **list);
 void					free_cmd(t_cmd **cmd);
 
+// Exit
+
+void					exit_msg(int status, const char *format, ...);
+
 // Utils
 
 char					*ft_strchr(const char *s, int c);
@@ -164,16 +168,23 @@ char					*ft_strncat(char *dest, const char *src, size_t n);
 char					*ft_strcpy(char *dest, const char *src);
 char					*ft_strtok(char *str, const char *delim);
 char					*join_argv(const char **argv);
-char					*ft_sprintf(const char *format, ...);
+int						ft_sprintf(char *str, const char *format, ...);
 void					*ft_memcpy(void *dest, const void *src, size_t n);
 void					*ft_realloc(void *ptr, size_t size);
-void					ft_puts(const char *s, int fd);
+void					ft_fputs(const char *s, int fd);
 char					*ft_strncpy(char *dest, const char *src, size_t n);
 bool					ft_isspace(int c);
 char					*ft_itoa(int n);
 int						ft_abs(int n);
 int						ndigits(int n, int base);
 size_t					ft_strcspn(const char *s, const char *reject);
+int						ft_dprintf(int fd, const char *format, ...);
+int						ft_vsprintf(char *str, const char *format, va_list ap);
+int						ft_vsnprintf(char *str, size_t size, const char *format,
+							va_list ap);
+int						ft_snprintf(char *str, size_t size, const char *format,
+							...);
+int						ft_vdprintf(int fd, const char *format, va_list ap);
 
 // Cwd
 
@@ -182,8 +193,8 @@ void					set_cwd(char *cwd, t_env_var_list *env_vars);
 
 // Err
 
-void					exit_err(int status, const char *message, ...);
-void					print_err(const char *message, ...);
+void					exit_err(int status, const char *format, ...);
+void					print_err(const char *format, ...);
 
 // Signals
 

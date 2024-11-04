@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/21 11:06:42 by dkolodze      #+#    #+#                 */
-/*   Updated: 2024/10/28 14:35:01 by dkolodze      ########   odam.nl         */
+/*   Updated: 2024/11/04 14:35:50 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ bool	are_equal(t_dummy_token *expected, t_tkn_list *actual_list)
 	{
 		if (expected[i].type != actual->type)
 		{
-			printf("types of tokens mismatch: expected %d, got %d\n",
+			print_err("types of tokens mismatch: expected %d, got %d\n",
 				expected[i].type, actual->type);
 			return (false);
 		}
 		if (ft_strcmp(expected[i].value, actual->value))
 		{
-			printf("values of tokens mismatch: expected '%s', got '%s'\n",
+			print_err("values of tokens mismatch: expected '%s', got '%s'\n",
 				expected[i].value, actual->value);
 			return (false);
 		}
@@ -47,7 +47,7 @@ bool	are_equal(t_dummy_token *expected, t_tkn_list *actual_list)
 	}
 	if (expected[i].type != TKN_END)
 	{
-		printf("expected more tokens, got only %d\n", i);
+		print_err("expected more tokens, got only %d\n", i);
 		print_tkn_list(actual_list);
 		return (false);
 	}

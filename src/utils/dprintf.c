@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   minishell_tests.h                                  :+:    :+:            */
+/*   dprintf.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/04 15:27:38 by mde-krui      ########   odam.nl         */
+/*   Created: 2024/11/04 14:41:09 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/11/04 15:42:31 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_TESTS_H
-# define MINISHELL_TESTS_H
+#include "minishell.h"
 
-# include "acutest.h"
-# include "minishell.h"
+int	ft_dprintf(int fd, const char *format, ...)
+{
+	va_list	args;
+	int		len;
 
-void	test_parse_tokens(void);
-void	test_parse_envp(void);
-void	test_get_env_var(void);
-void	test_snprintf(void);
-
-#endif
+	va_start(args, format);
+	len = ft_vdprintf(fd, format, args);
+	va_end(args);
+	return (len);
+}

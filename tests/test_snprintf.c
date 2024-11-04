@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   minishell_tests.h                                  :+:    :+:            */
+/*   test_snprintf.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/04 15:27:38 by mde-krui      ########   odam.nl         */
+/*   Created: 2024/11/04 15:23:26 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/11/04 15:27:59 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_TESTS_H
-# define MINISHELL_TESTS_H
+#define TEST_NO_MAIN
 
-# include "acutest.h"
-# include "minishell.h"
+#include "minishell.h"
+#include "minishell_tests.h"
 
-void	test_parse_tokens(void);
-void	test_parse_envp(void);
-void	test_get_env_var(void);
-void	test_snprintf(void);
+void	test_snprintf(void)
+{
+	char	buffer[100];
+	int		ret;
 
-#endif
+	ret = ft_snprintf(buffer, 100, "Hello, %s!", "world");
+	TEST_ASSERT(ret == 13);
+	TEST_ASSERT(strcmp(buffer, "Hello, world!") == 0);
+}

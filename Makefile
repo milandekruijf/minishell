@@ -29,13 +29,15 @@ SRCS = \
 	exec/exec_unset env/unset_env_var exec/exec_export \
 	env/set_env_var exec/exec_cd exec/exec_abs exec/exec_path \
 	cwd/get_cwd cwd/set_cwd env/ensure_env_var \
-	utils/sprintf utils/realloc utils/memcpy utils/puts \
+	utils/sprintf utils/realloc utils/memcpy utils/fputs \
 	err/print_err err/exit_err exec/exec_echo vars/expand_vars \
 	utils/strncpy utils/isspace utils/abs utils/itoa \
-	utils/ndigits utils/strcspn
+	utils/ndigits utils/strcspn exit/exit_msg utils/dprintf \
+	utils/vsprintf utils/vsnprintf utils/snprintf utils/vdprintf \
 
 TESTS = \
-	main test_parse_tokens test_parse_envp test_get_env_var
+	main test_parse_tokens test_parse_envp test_get_env_var \
+	test_snprintf
 
 SRC_DIR = src
 TESTS_DIR = tests
