@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/04 13:11:18 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/04 14:19:27 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/11/04 14:26:37 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ char	*expand_vars(const char *str, t_env_var_list *env_vars)
 			curr++;
 			continue ;
 		}
-		env_var = get_env_var(env_vars, ft_strtok((char *)curr, ' '));
+		env_var = get_env_var(env_vars, ft_strtok((char *)curr, " \t\n\v\f\r"));
 		if (!env_var)
 		{
-			curr += ft_strcspn(curr, " ") + 1;
+			curr += ft_strcspn(curr, " \t\n\v\f\r") + 1;
 			continue ;
 		}
 		res = ft_strcat(res, env_var->value);

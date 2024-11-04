@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   exec_rel.c                                         :+:    :+:            */
+/*   exec_path.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/31 14:55:49 by anonymous     #+#    #+#                 */
-/*   Updated: 2024/10/31 15:05:47 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/11/04 14:27:20 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	exec_path(t_cmd *cmd, t_env_var_list *env_vars)
 	int		err;
 
 	path = get_env_var(env_vars, "PATH")->value;
-	path = ft_strtok(ft_strdup(path), ':');
+	path = ft_strtok(ft_strdup(path), ":");
 	err = -1;
 	while (path)
 	{
@@ -29,7 +29,7 @@ int	exec_path(t_cmd *cmd, t_env_var_list *env_vars)
 		err = execve(full_path, cmd->argv, env_var_list_to_envp(env_vars));
 		if (err != -1)
 			return (err);
-		path = ft_strtok(NULL, ':');
+		path = ft_strtok(NULL, ":");
 	}
 	return (err);
 }
