@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/04 14:02:29 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/11/04 14:18:42 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,7 @@ bool					ft_isspace(int c);
 char					*ft_itoa(int n);
 int						ft_abs(int n);
 int						ndigits(int n, int base);
+size_t					ft_strcspn(const char *s, const char *reject);
 
 // Cwd
 

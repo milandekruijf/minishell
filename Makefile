@@ -32,7 +32,7 @@ SRCS = \
 	utils/sprintf utils/realloc utils/memcpy utils/puts \
 	err/print_err err/exit_err exec/exec_echo vars/expand_vars \
 	utils/strncpy utils/isspace utils/abs utils/itoa \
-	utils/ndigits
+	utils/ndigits utils/strcspn
 
 TESTS = \
 	main test_parse_tokens test_parse_envp test_get_env_var
