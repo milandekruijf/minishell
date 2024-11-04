@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   get_cwd.c                                          :+:    :+:            */
+/*   memcpy.c                                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
+/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/31 15:08:57 by anonymous     #+#    #+#                 */
-/*   Updated: 2024/11/04 11:52:10 by mde-krui      ########   odam.nl         */
+/*   Created: 2023/10/02 14:52:56 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/11/04 11:56:35 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*get_cwd(void)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	char	*cwd;
+	unsigned char	*tmp;
 
-	cwd = getcwd(NULL, 0);
-	ms_assert(cwd != NULL, "get_cwd: getcwd failed");
-	return (cwd);
+	tmp = (unsigned char *)dest;
+	while (n-- > 0)
+		*(unsigned char *)tmp++ = *(unsigned char *)src++;
+	return (dest);
 }

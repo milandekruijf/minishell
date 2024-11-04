@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   get_cwd.c                                          :+:    :+:            */
+/*   realloc.c                                          :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
+/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/31 15:08:57 by anonymous     #+#    #+#                 */
-/*   Updated: 2024/11/04 11:52:10 by mde-krui      ########   odam.nl         */
+/*   Created: 2024/11/04 11:41:49 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/11/04 11:47:41 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*get_cwd(void)
+void	*ft_realloc(void *ptr, size_t size)
 {
-	char	*cwd;
+	void	*new_ptr;
 
-	cwd = getcwd(NULL, 0);
-	ms_assert(cwd != NULL, "get_cwd: getcwd failed");
-	return (cwd);
+	new_ptr = ms_malloc(size);
+	if (ptr)
+	{
+		ft_memcpy(new_ptr, ptr, size);
+		free(ptr);
+	}
+	return (new_ptr);
 }

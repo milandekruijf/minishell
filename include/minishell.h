@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/10/31 15:36:38 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/11/04 11:56:41 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,11 +162,13 @@ char					*ft_strncat(char *dest, const char *src, size_t n);
 char					*ft_strcpy(char *dest, const char *src);
 char					*ft_strtok(char *str, const char delim);
 char					*join_argv(int argc, const char **argv);
+char					*ft_sprintf(const char *format, ...);
+void					*ft_memcpy(void *dest, const void *src, size_t n);
 
 // Cwd
 
-char					*get_cwd(t_env_var_list *env_vars);
-void					set_cwd(char *path, t_env_var_list *env_vars);
+char					*get_cwd(void);
+void					set_cwd(char *cwd, t_env_var_list *env_vars);
 char					*ensure_cwd(t_env_var_list *env_vars);
 
 // Signals

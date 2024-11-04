@@ -28,7 +28,8 @@ SRCS = \
 	cmds/free_cmd utils/strtok run/run_c exec/exec_env \
 	exec/exec_unset env/unset_env_var exec/exec_export \
 	env/set_env_var exec/exec_cd exec/exec_abs exec/exec_path \
-	cwd/get_cwd cwd/set_cwd env/ensure_env_var cwd/ensure_cwd
+	cwd/get_cwd cwd/set_cwd env/ensure_env_var cwd/ensure_cwd \
+	utils/sprintf utils/realloc utils/memcpy
 
 TESTS = \
 	main test_parse_tokens test_parse_envp test_get_env_var
