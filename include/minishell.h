@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/04 14:26:00 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/11/04 14:28:55 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@
 # ifndef MS_PROMPT
 #  define MS_PROMPT "ツ > "
 # endif
+
+# define MS_WHITESPACE_CHARS " \t\n\v\f\r"
 
 // ----------------------------------------
 // Enums
