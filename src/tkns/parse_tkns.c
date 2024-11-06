@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:12:31 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/04 13:47:46 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/11/06 20:52:04 by daria         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,27 +46,30 @@ static void	handle_word(enum e_TknParseState *state, char **start, char *s,
 		t_tkn_list *token_list)
 {
 	t_tkn	*token;
+	char	*word;
 
 	if (get_symbol_type(*s) == TKN_PS_SYMBOL_WHITESPACE
 		|| get_symbol_type(*s) == TKN_PS_SYMBOL_NULL_TERMINATOR)
 	{
-		token = create_tkn(TKN_WORD, ft_strndup(*start, (s - *start)));
+		word = ft_strndup(*start, (s - *start));
+		token = create_tkn(TKN_WORD, word);
+		free(word);
 		add_tkn(token_list, token);
 		*state = TKN_PS_EMPTY;
 		*start = NULL;
 	}
 	if (get_symbol_type(*s) == TKN_PS_SYMBOL_PIPE)
 	{
-		token = create_tkn(TKN_WORD, ft_strndup(*start, (s - *start)));
+		word = ft_strndup(*start, (s - *start));
+		token = create_tkn(TKN_WORD, word);
+		free(word);
 		add_tkn(token_list, token);
 		add_tkn(token_list, create_tkn(TKN_PIPE, "|"));
 		*state = TKN_PS_EMPTY;
 		*start = NULL;
 	}
 	if (get_symbol_type(*s) == TKN_PS_SYMBOL_LETTER)
-	{
 		return ;
-	}
 }
 
 void	handle_state(enum e_TknParseState *state, char **start, char *s,
