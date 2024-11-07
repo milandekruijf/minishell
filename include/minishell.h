@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/06 20:32:05 by daria         ########   odam.nl         */
+/*   Updated: 2024/11/07 14:19:35 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,11 @@ int						ft_snprintf(char *str, size_t size, const char *format,
 							...);
 int						ft_vdprintf(int fd, const char *format, va_list ap);
 char					*strfmt(const char *format, ...);
+int						ft_vprintf(const char *format, va_list ap);
+int						ft_printf(const char *format, ...);
+char					*ft_strnstr(const char *big, const char *little,
+							size_t len);
+char					*ft_strstr(const char *big, const char *little);
 
 // Cwd
 
