@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/07 14:19:35 by anonymous     ########   odam.nl         */
+/*   Updated: 2024/11/11 23:28:56 by daria         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,6 +263,9 @@ void					exec_export(const char **argv,
 							t_env_var_list *env_vars);
 void					exec_echo(const char **argv, t_env_var_list *env_vars);
 void					exec_cd(const char **argv, t_env_var_list *env_vars);
+void					exec_builtin(t_cmd *cmd, t_env_var_list *env_vars);
+void					exec_in_fork(t_cmd *cmd, t_env_var_list *env_vars);
+bool					is_builtin(char *name);
 
 // Run
 

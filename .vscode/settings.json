@@ -3,5 +3,10 @@
 		"system_error": "c",
 		"cstdlib": "c",
 		"minishell.h": "c"
-	}
+	},
+	"[c]": {
+		"editor.defaultFormatter": "keyhr.42-c-format",
+		"editor.formatOnSave": true
+	},
+	"files.insertFinalNewline": true
 }

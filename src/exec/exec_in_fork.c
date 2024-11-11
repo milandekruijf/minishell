@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   exec_bin.c                                         :+:    :+:            */
+/*   exec_in_fork.c                                     :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
+/*   By: daria <daria@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/28 13:29:03 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/11 23:30:03 by daria         ########   odam.nl         */
+/*   Created: 2024/11/11 17:33:35 by daria         #+#    #+#                 */
+/*   Updated: 2024/11/11 23:31:22 by daria         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exec_bin(t_cmd *cmd, t_env_var_list *env_vars)
+void	exec_in_fork(t_cmd *cmd, t_env_var_list *env_vars)
 {
-	if (exec_abs(cmd, env_vars) != -1)
-		exit(EXIT_SUCCESS);
-	if (exec_path(cmd, env_vars) != -1)
-		exit(EXIT_SUCCESS);
-	exit_err(MS_EXIT_CMD_NOT_FOUND, "%s: command not found\n", cmd->argv[0]);
+	pid_t	pid;
+
+	pid = fork();
+	if (pid == 0)
+	{
+		if (is_builtin(cmd->argv[0]))
+			exec_builtin(cmd, env_vars);
+		else
+			exec_bin(cmd, env_vars);
+	}
+	else
+		waitpid(pid, NULL, 0);
 }
