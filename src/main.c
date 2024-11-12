@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:26:50 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/12 15:36:47 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/11/12 16:04:33 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, const char **argv, const char **envp)
 	env_vars = parse_envp(envp);
 	if (argc == 1)
 	{
-		listen_sigint();
+		init_sig();
 		run_it(env_vars);
 	}
 	else

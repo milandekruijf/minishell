@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/12 15:43:17 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/11/12 16:03:03 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,12 @@ typedef struct s_sig
 }						t_sig;
 
 // ----------------------------------------
+// Globals
+// ----------------------------------------
+
+extern t_sig			g_sig;
+
+// ----------------------------------------
 // Functions
 // ----------------------------------------
 
@@ -269,18 +275,18 @@ void					free_tkn_list(t_tkn_list **list);
 // Exec
 
 void					exec(t_cmd_list *cmds, t_env_var_list *env_vars);
-void					exec_exit(void);
-void					exec_pwd(void);
+int						exec_exit(void);
+int						exec_pwd(void);
 void					exec_bin(t_cmd *cmd, t_env_var_list *env_vars);
 int						exec_path(t_cmd *cmd, t_env_var_list *env_vars);
 int						exec_abs(t_cmd *cmd, t_env_var_list *env_vars);
-void					exec_env(t_env_var_list *env_vars);
-void					exec_unset(const char **argv, t_env_var_list *env_vars);
-void					exec_export(const char **argv,
+int						exec_env(t_env_var_list *env_vars);
+int						exec_unset(const char **argv, t_env_var_list *env_vars);
+int						exec_export(const char **argv,
 							t_env_var_list *env_vars);
-void					exec_echo(const char **argv, t_env_var_list *env_vars);
-void					exec_cd(const char **argv, t_env_var_list *env_vars);
-void					exec_builtin(t_cmd *cmd, t_env_var_list *env_vars);
+int						exec_echo(const char **argv, t_env_var_list *env_vars);
+int						exec_cd(const char **argv, t_env_var_list *env_vars);
+int						exec_builtin(t_cmd *cmd, t_env_var_list *env_vars);
 void					exec_in_fork(t_cmd *cmd, t_env_var_list *env_vars,
 							t_piping piping);
 bool					is_builtin(char *name);

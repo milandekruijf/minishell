@@ -6,13 +6,14 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:28:38 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/04 12:27:44 by mde-krui      ########   odam.nl         */
+/*   Updated: 2024/11/12 15:53:45 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exec_pwd(void)
+int	exec_pwd(void)
 {
 	printf("%s\n", get_cwd());
+	return (1);
 }

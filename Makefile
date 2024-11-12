@@ -37,7 +37,8 @@ SRCS = \
 	utils/strfmt err/vexit_err err/vprint_err utils/vprintf \
 	utils/printf utils/strnstr utils/strstr \
 	exec/exec_in_fork exec/exec_builtin exec/is_builtin \
-	exec/close_pipes exec/allocate_pipes exec/free_pipes
+	exec/close_pipes exec/allocate_pipes exec/free_pipes \
+	signals/init_sig
 
 TESTS = \
 	main test_parse_tokens test_parse_envp test_get_env_var \
