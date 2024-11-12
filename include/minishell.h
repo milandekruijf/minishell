@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/11 23:28:56 by daria         ########   odam.nl         */
+/*   Updated: 2024/11/12 00:45:34 by daria         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ typedef struct s_cmd
 {
 	char				**argv;
 	struct s_cmd		*next;
+	pid_t				pid;
 }						t_cmd;
 
 typedef struct s_cmd_list
@@ -140,6 +141,14 @@ typedef struct s_cmd_list
 	struct s_cmd		*head;
 	struct s_cmd		*tail;
 }						t_cmd_list;
+
+typedef struct s_piping
+{
+	int					in;
+	int					out;
+	int					**pipes;
+	int					count;
+}						t_piping;
 
 // ----------------------------------------
 // Functions
@@ -264,8 +273,13 @@ void					exec_export(const char **argv,
 void					exec_echo(const char **argv, t_env_var_list *env_vars);
 void					exec_cd(const char **argv, t_env_var_list *env_vars);
 void					exec_builtin(t_cmd *cmd, t_env_var_list *env_vars);
-void					exec_in_fork(t_cmd *cmd, t_env_var_list *env_vars);
+void					exec_in_fork(t_cmd *cmd, t_env_var_list *env_vars,
+							t_piping piping);
 bool					is_builtin(char *name);
+void					close_pipes(int **pipes, int count, int in_to_keep,
+							int out_to_keep);
+void					free_pipes(int ***pipes, int count);
+int						**allocate_pipes(int count);
 
 // Run
 

@@ -6,7 +6,7 @@
 /*   By: daria <daria@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/11 17:39:15 by daria         #+#    #+#                 */
-/*   Updated: 2024/11/11 17:39:45 by daria         ########   odam.nl         */
+/*   Updated: 2024/11/12 00:58:08 by daria         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	exec_builtin(t_cmd *cmd, t_env_var_list *env_vars)
 		exec_cd((const char **)cmd->argv, env_vars);
 	else if (ft_strcmp(cmd->argv[0], "echo") == 0)
 		exec_echo((const char **)cmd->argv, env_vars);
-	ms_assert(false, "cmd %s is not a builtin passed to exec_builtin",
-		cmd->argv[0]);
+	else
+		ms_assert(false, "cmd %s is not a builtin passed to exec_builtin",
+			cmd->argv[0]);
 }
