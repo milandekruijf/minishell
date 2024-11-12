@@ -6,7 +6,7 @@
 /*   By: daria <daria@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/12 00:37:49 by daria         #+#    #+#                 */
-/*   Updated: 2024/11/12 00:44:05 by daria         ########   odam.nl         */
+/*   Updated: 2024/11/12 12:22:58 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,12 @@ int	**allocate_pipes(int count)
 		pipes[i] = ms_malloc(sizeof(int) * 2);
 		i += 1;
 	}
+	pipes[0][0] = STDIN_FILENO;
+	pipes[0][1] = -1;
+	i = 1;
+	while (i <= count)
+		pipe(pipes[i++]);
+	pipes[count][0] = -1;
+	pipes[count][1] = STDOUT_FILENO;
 	return (pipes);
 }

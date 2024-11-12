@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:03:45 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/12 01:48:47 by daria         ########   odam.nl         */
+/*   Updated: 2024/11/12 12:23:35 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,6 @@ void	exec_multiple(t_cmd_list *cmds, t_env_var_list *env_vars)
 
 	piping.count = cmd_list_len(cmds);
 	piping.pipes = allocate_pipes(piping.count);
-	i = 1;
-	while (i <= piping.count)
-		pipe(piping.pipes[i++]);
-	piping.pipes[0][0] = STDIN_FILENO;
-	piping.pipes[0][1] = -1;
-	piping.pipes[piping.count][1] = STDOUT_FILENO;
-	piping.pipes[piping.count][0] = -1;
 	cmd = cmds->head;
 	i = 1;
 	while (cmd)
@@ -56,7 +49,6 @@ void	exec_multiple(t_cmd_list *cmds, t_env_var_list *env_vars)
 	close_pipes(piping.pipes, piping.count, STDIN_FILENO, STDOUT_FILENO);
 	while (cmd)
 	{
-		fprintf(stderr, "waiting for child %d\n", cmd->pid);
 		waitpid(cmd->pid, NULL, 0);
 		cmd = cmd->next;
 	}
