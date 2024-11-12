@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:03:45 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/12 01:28:50 by daria         ########   odam.nl         */
+/*   Updated: 2024/11/12 01:48:47 by daria         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ void	exec_multiple(t_cmd_list *cmds, t_env_var_list *env_vars)
 		++i;
 	}
 	cmd = cmds->head;
+	close_pipes(piping.pipes, piping.count, STDIN_FILENO, STDOUT_FILENO);
 	while (cmd)
 	{
 		fprintf(stderr, "waiting for child %d\n", cmd->pid);
 		waitpid(cmd->pid, NULL, 0);
 		cmd = cmd->next;
 	}
-	close_pipes(piping.pipes, piping.count, STDIN_FILENO, STDOUT_FILENO);
 	free_pipes(&piping.pipes, piping.count);
 }
 
