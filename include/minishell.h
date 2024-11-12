@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/11 13:13:25 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/12 00:45:34 by daria         ########   odam.nl         */
+/*   Updated: 2024/11/12 15:43:17 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,13 @@ typedef struct s_piping
 	int					count;
 }						t_piping;
 
+typedef struct s_sig
+{
+	bool				sigint;
+	int					status;
+	pid_t				pid;
+}						t_sig;
+
 // ----------------------------------------
 // Functions
 // ----------------------------------------
@@ -220,6 +227,7 @@ void					print_err(const char *format, ...);
 
 // Signals
 
+void					init_sig(void);
 void					handle_sigint(int sig);
 void					listen_sigint(void);
 

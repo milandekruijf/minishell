@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   init_sig.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/11 13:26:50 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/12 15:36:47 by mde-krui      ########   odam.nl         */
+/*   Created: 2024/11/12 15:37:07 by mde-krui      #+#    #+#                 */
+/*   Updated: 2024/11/12 15:43:29 by mde-krui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_sig	g_sig;
+extern t_sig	g_sig;
 
-int	main(int argc, const char **argv, const char **envp)
+void	init_sig(void)
 {
-	t_env_var_list	*env_vars;
-
-	env_vars = parse_envp(envp);
-	if (argc == 1)
-	{
-		listen_sigint();
-		run_it(env_vars);
-	}
-	else
-		run_c(join_argv(argv), env_vars);
-	free_env_var_list(&env_vars);
-	printf("exit\n");
-	return (EXIT_SUCCESS);
+	g_sig.sigint = false;
+	g_sig.pid = 0;
+	g_sig.status = 0;
 }
