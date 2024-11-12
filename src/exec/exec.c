@@ -6,7 +6,7 @@
 /*   By: mde-krui <mde-krui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/15 14:03:45 by mde-krui      #+#    #+#                 */
-/*   Updated: 2024/11/12 12:23:35 by dkolodze      ########   odam.nl         */
+/*   Updated: 2024/11/12 15:11:13 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	exec_one(t_cmd *cmd, t_env_var_list *env_vars)
 
 void	exec(t_cmd_list *cmds, t_env_var_list *env_vars)
 {
+	if (cmds->head == NULL)
+		return ;
 	if (cmds->head->next == NULL)
 		exec_one(cmds->head, env_vars);
 	else
